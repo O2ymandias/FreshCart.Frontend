@@ -1,0 +1,59 @@
+<div
+  class="bg-base-200 grid gap-4 rounded-lg px-8 py-4 shadow sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+>
+  <!-- Orders -->
+  <app-account-nav-item>
+    <div (click)="scrollTo('orders')">
+      <h3 class="mb-2 flex items-center justify-center gap-4 text-lg font-bold">
+        <span> {{ "account.nav.orders" | translate }} </span>
+        <i class="fa-solid fa-receipt transition-colors"> </i>
+      </h3>
+      <p class="text-base-content/75 text-center font-semibold">
+        {{ ordersCount() | dynamicNumber: locale() }}
+      </p>
+    </div>
+  </app-account-nav-item>
+  <!-- Orders -->
+
+  <!-- Ratings -->
+  <app-account-nav-item>
+    <div (click)="scrollTo('ratings')">
+      <h3 class="mb-2 flex items-center justify-center gap-4 text-lg font-bold">
+        <span> {{ "account.nav.ratings" | translate }} </span>
+        <i class="fa-solid fa-star transition-colors"></i>
+      </h3>
+      <p class="text-base-content/75 text-center font-semibold">
+        {{ ratingsCount() | dynamicNumber: locale() }}
+      </p>
+    </div>
+  </app-account-nav-item>
+  <!-- Reviews -->
+
+  <!-- Cart -->
+  <app-account-nav-item>
+    <div [routerLink]="['/cart']">
+      <h3 class="mb-2 flex items-center justify-center gap-4 text-lg font-bold">
+        <span> {{ "account.nav.cart" | translate }} </span>
+        <i class="fa-solid fa-shopping-cart transition-colors"></i>
+      </h3>
+      <p class="text-base-content/75 text-center font-semibold">
+        {{ cartCount() | dynamicNumber: locale() }}
+      </p>
+    </div>
+  </app-account-nav-item>
+  <!-- Cart -->
+
+  <!-- Wishlist -->
+  <app-account-nav-item>
+    <div [routerLink]="['/wishlist']">
+      <h3 class="mb-2 flex items-center justify-center gap-4 text-lg font-bold">
+        <span> {{ "account.nav.wishlist" | translate }} </span>
+        <i class="fa-solid fa-heart transition-colors"></i>
+      </h3>
+      <p class="text-base-content/75 text-center font-semibold">
+        {{ wishlistCount() | dynamicNumber: locale() }}
+      </p>
+    </div>
+  </app-account-nav-item>
+  <!-- Wishlist -->
+</div>

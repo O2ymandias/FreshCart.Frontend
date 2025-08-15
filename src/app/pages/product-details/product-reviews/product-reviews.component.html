@@ -1,0 +1,64 @@
+<div class="bg-base-200 space-y-8 rounded p-6 shadow">
+  <!-- Header -->
+  <header>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <h2 class="text-2xl font-bold">
+          {{ "ratings.title" | translate }}
+        </h2>
+        <app-average-rating />
+      </div>
+
+      @if (isAuthenticated()) {
+        <app-rate-us [productId]="productId()" />
+      } @else {
+        <div>
+          <a
+            [routerLink]="['/auth', 'login']"
+            [queryParams]="{ returnUrl: '/products/' + productId() }"
+            class="btn btn-primary btn-outline"
+          >
+            <span>{{ "ratings.loginToRateBtn" | translate }}</span>
+          </a>
+        </div>
+      }
+    </div>
+
+    <p class="my-4 text-sm">
+      <span class="text-base-content font-semibold">
+        {{ productTotalRatings() | dynamicNumber: locale() }}
+      </span>
+      <span class="text-base-content/75 font-medium">
+        {{ "ratings.totalRatings" | translate }}
+      </span>
+    </p>
+  </header>
+  <!-- Header -->
+
+  <!-- Reviews -->
+  <div class="space-y-4">
+    @for (ratingItem of productRatings(); track ratingItem.id) {
+      @if (ratingItem.title || ratingItem.comment) {
+        <div>
+          <app-product-review
+            (delete)="deleteRating($event)"
+            [ratingItem]="ratingItem"
+          />
+        </div>
+      }
+    }
+  </div>
+  <!-- Reviews -->
+
+  <!-- Pagination -->
+  <div class="flex items-center justify-center">
+    <app-pagination
+      [currPageNumber]="currPageNumber()"
+      [totalPages]="totalPages()"
+      [hasNext]="hasNext()"
+      [hasPrevious]="hasPrevious()"
+      (pageChange)="onPageChange($event)"
+    />
+  </div>
+  <!-- Pagination -->
+</div>

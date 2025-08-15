@@ -1,0 +1,92 @@
+<div class="join">
+  @if (hasPrevious()) {
+    <!-- prev btn -->
+    <button (click)="onPageChange(currPageNumber() - 1)" class="join-item btn">
+      <i
+        [class]="{
+          'fa-angles-left': currLang() === 'en',
+          'fa-angles-right': currLang() === 'ar',
+        }"
+        class="fa-solid"
+      ></i>
+    </button>
+    <!-- prev btn -->
+  }
+
+  <!-- btn 1 -->
+  <button
+    (click)="onPageChange(1)"
+    [class]="{
+      'btn-primary': currPageNumber() === 1,
+      'btn-soft': currPageNumber() === 1,
+    }"
+    class="join-item btn"
+  >
+    {{ 1 | dynamicNumber: locale() }}
+  </button>
+  <!-- btn 1 -->
+
+  @if (totalPages() > 1) {
+    <!-- btn 2 -->
+    <button
+      (click)="onPageChange(2)"
+      [class]="{
+        'btn-primary': currPageNumber() === 2,
+        'btn-soft': currPageNumber() === 2,
+      }"
+      class="join-item btn"
+    >
+      {{ 2 | dynamicNumber: locale() }}
+    </button>
+    <!-- btn 2 -->
+  }
+
+  @if (totalPages() > 3) {
+    <!-- btn ... -->
+    @let tooltip =
+      "pagination.tooltip" | translate: { pageNumber: currPageNumber() };
+    <div
+      class="tooltip tooltip-bottom"
+      [attr.data-tip]="
+        currPageNumber() > 2 && currPageNumber() < totalPages() ? tooltip : ''
+      "
+    >
+      <button
+        [disabled]="currPageNumber() <= 2 || currPageNumber() === totalPages()"
+        class="join-item btn btn-soft btn-primary"
+      >
+        ...
+      </button>
+    </div>
+    <!-- btn ... -->
+  }
+
+  @if (totalPages() > 2) {
+    <!-- last btn -->
+    <button
+      (click)="onPageChange(totalPages())"
+      [class]="{
+        'btn-primary': currPageNumber() === totalPages(),
+        'btn-soft': currPageNumber() === totalPages(),
+      }"
+      class="join-item btn"
+    >
+      {{ totalPages() | dynamicNumber: locale() }}
+    </button>
+    <!-- last btn -->
+  }
+
+  @if (hasNext()) {
+    <!-- next btn -->
+    <button (click)="onPageChange(currPageNumber() + 1)" class="join-item btn">
+      <i
+        [class]="{
+          'fa-angles-left': currLang() === 'ar',
+          'fa-angles-right': currLang() === 'en',
+        }"
+        class="fa-solid"
+      ></i>
+    </button>
+    <!-- next btn -->
+  }
+</div>

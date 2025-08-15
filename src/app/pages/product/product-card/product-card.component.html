@@ -1,0 +1,71 @@
+<div class="card bg-base-100 border-base-200 mx-auto h-full border shadow-sm">
+  <figure>
+    <img
+      [routerLink]="['/products', product().id]"
+      class="h-48 w-full cursor-pointer object-cover"
+      [src]="product().pictureUrl"
+      [alt]="product().name"
+    />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title line-clamp-1">
+      <a [routerLink]="['/products', product().id]">{{ product().name }}</a>
+    </h2>
+    <p class="text-base-content/75 line-clamp-2 text-sm">
+      {{ product().description }}
+    </p>
+
+    <div class="flex items-center justify-between">
+      <div class="badge badge-soft badge-ghost">
+        {{ product().brand }}
+      </div>
+      <div class="badge badge-soft badge-ghost">
+        {{ product().category }}
+      </div>
+    </div>
+
+    <h2>
+      <p class="flex items-start gap-1 text-xl font-bold transition-colors">
+        {{ product().price | dynamicNumber: locale() }}
+        <span class="text-base-content/50 text-xs font-semibold">
+          {{ "currency.EGP" | translate }}
+        </span>
+      </p>
+    </h2>
+
+    <div class="card-actions justify-center gap-4">
+      @if (product().inStock) {
+        <button
+          [disabled]="cartLoading()"
+          (click)="addToCart()"
+          class="btn btn-circle btn-outline btn-primary relative"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+          @let qty = qtyInCart();
+          @if (qty > 0) {
+            <span class="cart-btn-indicator">
+              {{ qty | dynamicNumber: locale() }}
+            </span>
+          }
+        </button>
+      }
+
+      @if (isAuthenticated()) {
+        <button
+          [disabled]="wishlistLoading()"
+          [class]="{
+            'btn-active': isFavorite(),
+          }"
+          (click)="addToWishlist()"
+          class="btn btn-circle btn-secondary btn-outline"
+        >
+          @if (isFavorite()) {
+            <i class="fa-solid fa-heart"></i>
+          } @else {
+            <i class="fa-regular fa-heart"></i>
+          }
+        </button>
+      }
+    </div>
+  </div>
+</div>

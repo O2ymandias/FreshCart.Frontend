@@ -1,0 +1,75 @@
+<section class="my-10 px-12 py-6">
+  @if (cartItems().length > 0) {
+    <div class="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3">
+      <!-- Cart Header -->
+      <div class="col-span-full flex items-center justify-between">
+        <h1 class="flex items-center space-x-4">
+          <span class="text-2xl font-bold">
+            {{ "cart.title" | translate }}
+          </span>
+          <span class="badge badge-primary font-medium">
+            {{ cartItems().length | dynamicNumber: locale() }}
+          </span>
+        </h1>
+        <button (click)="clearCart()" class="btn btn-error btn-outline">
+          {{ "cart.clearCartBtn" | translate }}
+          <i class="fa-solid fa-trash ms-2"></i>
+        </button>
+      </div>
+
+      <div class="col-span-full space-y-4 lg:col-span-2">
+        @for (cartItem of cartItems(); track cartItem.productId) {
+          <div>
+            <app-cart-item [cartItem]="cartItem" />
+          </div>
+        }
+      </div>
+
+      <div
+        class="bg-base-100 col-span-full h-fit overflow-hidden rounded shadow-sm lg:col-span-1"
+      >
+        <app-payment-summery
+          [subTotal]="subTotal()"
+          [shippingCost]="shippingCost()"
+          [tax]="0"
+          [total]="total()"
+        >
+          <div class="mt-8 flex flex-col items-center space-y-4">
+            @if (isAuthenticated()) {
+              <button (click)="showCheckout()" class="btn btn-soft btn-primary">
+                {{ "cart.checkoutBtn" | translate }}
+              </button>
+            } @else {
+              <button
+                [routerLink]="['/auth/login']"
+                [queryParams]="{ returnUrl: '/cart' }"
+                class="btn btn-soft btn-primary"
+              >
+                {{ "cart.loginToCheckoutBtn" | translate }}
+              </button>
+            }
+
+            <button class="btn btn-soft" [routerLink]="['/']">
+              {{ "cart.continueShoppingBtn" | translate }}
+            </button>
+          </div>
+        </app-payment-summery>
+      </div>
+    </div>
+  } @else {
+    @let notFound = notFoundTranslationMessage$ | async;
+    <app-notfound-resource [message]="notFound?.title ?? 'Your cart is empty'">
+      <a class="btn btn-soft" [routerLink]="['/']">
+        {{ "cart.continueShoppingBtn" | translate }}
+        <i class="fa-solid fa-shopping-cart"></i>
+      </a>
+    </app-notfound-resource>
+  }
+</section>
+
+<app-modal
+  title="{{ 'checkout.title' | translate }}"
+  [(visible)]="checkoutModalVisible"
+>
+  <app-checkout />
+</app-modal>

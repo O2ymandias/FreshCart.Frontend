@@ -1,0 +1,27 @@
+<!-- Reviews -->
+<div class="space-y-8">
+  @for (ratingItem of latestRatings(); track ratingItem.id) {
+    <div>
+      <app-product-review
+        [ratingItem]="ratingItem"
+        (delete)="deleteRating($event)"
+      >
+        <div class="flex items-center gap-4">
+          <img
+            [routerLink]="['/products', ratingItem.product.id]"
+            class="block h-16 w-16 cursor-pointer rounded-lg object-cover"
+            [src]="ratingItem.product.pictureUrl"
+            alt="product avatar"
+          />
+          <div>
+            <p class="font-semibold">{{ ratingItem.product.name }}</p>
+          </div>
+        </div>
+      </app-product-review>
+    </div>
+  } @empty {
+    @let notFound = "account.latestRatings.notFound" | translate;
+    <app-notfound-resource [message]="notFound" />
+  }
+</div>
+<!-- Reviews -->

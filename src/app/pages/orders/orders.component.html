@@ -1,0 +1,47 @@
+<section class="my-10 px-6 py-12">
+  <app-orders-header />
+
+  <div
+    class="my-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <app-orders-filter />
+    <app-orders-sort />
+  </div>
+
+  <div class="space-y-8">
+    @for (order of orders(); track order.orderId) {
+      <div>
+        <app-order-card
+          [order]="order"
+          (canceled)="onCancelOrder()"
+          (showDetails)="showOrderDetails($event)"
+        />
+      </div>
+    } @empty {
+      @let notFound = "orders.notFound" | translate;
+      <app-notfound-resource [message]="notFound.title ?? 'No Orders Found'" />
+    }
+  </div>
+
+  <div class="mt-10 flex justify-center">
+    <app-pagination
+      [currPageNumber]="currPageNumber()"
+      [totalPages]="totalPages()"
+      [hasNext]="hasNext()"
+      [hasPrevious]="hasPrevious()"
+      (pageChange)="moveToPage($event)"
+    />
+  </div>
+</section>
+
+@let order = selectedOrder();
+@let title = "orders.orderDetails.title" | translate;
+@if (order) {
+  <app-modal
+    [title]="title"
+    [(visible)]="orderDetailsVisible"
+    [closeOnBackdropClick]="true"
+  >
+    <app-order-details [order]="order" />
+  </app-modal>
+}

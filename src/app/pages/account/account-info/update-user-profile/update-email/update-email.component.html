@@ -1,0 +1,135 @@
+<div class="bg-base-200 space-y-6 rounded-lg p-10 shadow-sm">
+  @if (step() === 1) {
+    <form
+      [formGroup]="requestEmailChangeForm"
+      (ngSubmit)="requestEmailChange()"
+      class="space-y-6"
+    >
+      <!-- New Email -->
+      @let newEmail = requestEmailChangeForm.controls.newEmail;
+      @let newEmailPlaceholder =
+        "account.basicInfo.editForm.emailForm.newEmail" | translate;
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ newEmailPlaceholder }}
+          </span>
+          <input
+            formControlName="newEmail"
+            type="email"
+            class="input input-md w-full"
+            [placeholder]="newEmailPlaceholder"
+            autocomplete="email"
+          />
+        </label>
+
+        @if (newEmail.touched && newEmail.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            <li>
+              {{
+                "validations.required"
+                  | translate: { field: newEmailPlaceholder }
+              }}
+            </li>
+          </ul>
+        }
+      </div>
+      <!-- New Email -->
+
+      <!--  Password -->
+      @let password = requestEmailChangeForm.controls.password;
+      @let passwordPlaceholder =
+        "account.basicInfo.editForm.emailForm.password" | translate;
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ passwordPlaceholder }}
+          </span>
+          <input
+            formControlName="password"
+            type="password"
+            class="input input-md w-full"
+            [placeholder]="passwordPlaceholder"
+            autocomplete="current-password"
+          />
+        </label>
+
+        @if (password.touched && password.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            <li>
+              {{
+                "validations.required"
+                  | translate: { field: passwordPlaceholder }
+              }}
+            </li>
+          </ul>
+        }
+      </div>
+      <!--  Password -->
+
+      <div class="flex items-center justify-center">
+        <button [disabled]="isLoading()" type="submit" class="btn btn-primary">
+          {{
+            "account.basicInfo.editForm.emailForm.requestVerificationCodeBtn"
+              | translate
+          }}
+        </button>
+      </div>
+    </form>
+  } @else if (step() === 2) {
+    <form
+      [formGroup]="confirmChangeEmailForm"
+      (ngSubmit)="confirmEmailChange()"
+      class="space-y-6"
+    >
+      <!--  Verification Code -->
+      @let verificationCode = confirmChangeEmailForm.controls.verificationCode;
+      @let verificationCodePlaceholder =
+        "account.basicInfo.editForm.emailForm.verificationCode" | translate;
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ verificationCodePlaceholder }}
+          </span>
+          <input
+            formControlName="verificationCode"
+            type="text"
+            class="input input-md w-full"
+            [placeholder]="verificationCodePlaceholder"
+          />
+        </label>
+
+        @if (verificationCode.touched && verificationCode.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            <li>
+              {{
+                "validations.required"
+                  | translate: { field: verificationCodePlaceholder }
+              }}
+            </li>
+          </ul>
+        }
+      </div>
+      <!--  Verification Code -->
+
+      <div class="flex items-center justify-center">
+        <button [disabled]="isLoading()" type="submit" class="btn btn-primary">
+          {{
+            "account.basicInfo.editForm.emailForm.sendVerificationCodeBtn"
+              | translate
+          }}
+        </button>
+      </div>
+    </form>
+  }
+
+  @if (errorMessage()) {
+    <div role="alert" class="alert alert-error">
+      <span> {{ errorMessage() }} </span>
+    </div>
+  } @else if (successMessage()) {
+    <div role="alert" class="alert alert-success">
+      <span> {{ successMessage() }} </span>
+    </div>
+  }
+</div>

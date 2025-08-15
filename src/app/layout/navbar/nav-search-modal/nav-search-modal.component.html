@@ -1,0 +1,9 @@
+<button class="btn btn-ghost rounded-full" (click)="showModal()">
+  <i class="fa-solid fa-magnifying-glass text-lg"></i>
+</button>
+
+<dialog (click)="hideModal($event)" #searchModal class="modal">
+  <div class="modal-box">
+    <app-nav-search />
+  </div>
+</dialog>

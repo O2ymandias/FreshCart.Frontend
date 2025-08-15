@@ -1,0 +1,53 @@
+<div class="bg-base-100 space-y-4">
+  <div class="ring-base-content/25 rounded px-8 py-4 ring">
+    <div class="flex items-center justify-between gap-2">
+      <h2 class="text-lg font-bold">
+        {{ "orders.orderDetails.header.title" | translate }}
+      </h2>
+      <app-order-status [orderStatus]="order().orderStatus" />
+    </div>
+  </div>
+
+  <div
+    class="text-base-content ring-base-content/25 mx-auto w-full space-y-4 rounded px-4 py-2 ring"
+  >
+    <div>
+      <app-order-details-basic-info
+        [orderId]="order().orderId"
+        [orderDate]="order().orderDate"
+        [total]="order().total"
+      />
+    </div>
+
+    <div>
+      <app-order-details-shipping-info
+        [shippingAddress]="order().shippingAddress"
+        [paymentMethod]="order().paymentMethod"
+        [paymentStatus]="order().paymentStatus"
+      />
+    </div>
+
+    <div>
+      <app-order-details-order-items
+        [orderItems]="order().items"
+        [subTotal]="order().subTotal"
+      />
+    </div>
+
+    <div class="bg-base-200">
+      <app-payment-summery
+        [subTotal]="order().subTotal"
+        [shippingCost]="order().deliveryMethodCost"
+        [tax]="0"
+        [total]="order().total"
+      >
+        <h3
+          ngProjectAs="header"
+          class="text-base font-bold underline underline-offset-4"
+        >
+          {{ "orders.orderDetails.paymentSummary.title" | translate }}
+        </h3>
+      </app-payment-summery>
+    </div>
+  </div>
+</div>

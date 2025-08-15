@@ -1,0 +1,121 @@
+<section class="my-10 space-y-6">
+  <h1 class="text-base-content text-center text-4xl font-bold">
+    {{ "auth.login.title" | translate }}
+  </h1>
+  <div class="bg-base-200 mx-auto max-w-xl space-y-4 rounded-lg p-10 shadow">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="space-y-4">
+      <!-- UserName Or Email -->
+      @let userNameOrEmail = loginForm.controls.userNameOrEmail;
+      @let userNameOrEmailPlaceholder =
+        "auth.login.userNameOrEmail" | translate;
+
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ userNameOrEmailPlaceholder }}
+          </span>
+          <input
+            formControlName="userNameOrEmail"
+            type="text"
+            class="input input-md w-full"
+            [placeholder]="userNameOrEmailPlaceholder"
+            autocomplete="email"
+          />
+        </label>
+        @if (userNameOrEmail.touched && userNameOrEmail.hasError("required")) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            <li>
+              {{
+                "validations.required"
+                  | translate: { field: userNameOrEmailPlaceholder }
+              }}
+            </li>
+          </ul>
+        }
+      </div>
+      <!-- UserName Or Email -->
+
+      <!-- Password -->
+      @let password = loginForm.controls.password;
+      @let passwordPlaceHolder = "auth.login.password" | translate;
+
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ passwordPlaceHolder }}
+          </span>
+          <input
+            formControlName="password"
+            type="password"
+            class="input input-md w-full"
+            [placeholder]="passwordPlaceHolder"
+            autocomplete="current-password"
+          />
+        </label>
+
+        @if (password.touched && password.hasError("required")) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            <li>
+              {{
+                "validations.required"
+                  | translate: { field: passwordPlaceHolder }
+              }}
+            </li>
+          </ul>
+        }
+      </div>
+      <!-- Password -->
+
+      <div class="flex items-center justify-center">
+        <button type="submit" class="btn btn-primary">
+          {{ "auth.login.loginBtn" | translate }}
+        </button>
+      </div>
+
+      <div class="space-y-2">
+        <p class="flex items-center gap-2">
+          {{ "auth.login.forgotPasswordNavigation.title" | translate }}
+          <a
+            [routerLink]="['/auth', 'forget-password']"
+            class="link link-primary flex items-center gap-2 font-medium no-underline"
+          >
+            <span>
+              {{ "auth.login.forgotPasswordNavigation.link" | translate }}
+            </span>
+            <i
+              [class]="{
+                'fa-arrow-right': currLang() === 'en',
+                'fa-arrow-left': currLang() === 'ar',
+              }"
+              class="fa-solid"
+            ></i>
+          </a>
+        </p>
+        <p class="flex items-center gap-2">
+          {{ "auth.login.registerNavigation.title" | translate }}
+          <a
+            [routerLink]="['/auth', 'register']"
+            class="link link-primary flex items-center gap-2 font-medium no-underline"
+          >
+            <span>
+              {{ "auth.login.registerNavigation.link" | translate }}
+            </span>
+            <i
+              [class]="{
+                'fa-arrow-right': currLang() === 'en',
+                'fa-arrow-left': currLang() === 'ar',
+              }"
+              class="fa-solid"
+            ></i>
+          </a>
+        </p>
+      </div>
+    </form>
+
+    @if (errorMsg()) {
+      <div role="alert" class="alert alert-error">
+        <span> {{ errorMsg() }} </span>
+      </div>
+    }
+  </div>
+</section>

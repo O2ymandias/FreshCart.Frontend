@@ -1,0 +1,13 @@
+@let status = orderStatus();
+<div
+  [class]="{
+    'badge-primary': status === 'Pending',
+    'badge-info': status === 'Processing',
+    'badge-warning': status === 'Shipped',
+    'badge-success': status === 'Delivered',
+    'badge-error': status === 'Cancelled',
+  }"
+  class="badge badge-outline font-medium"
+>
+  {{ "orders.orderStatus." + status | translate }}
+</div>

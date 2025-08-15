@@ -1,0 +1,17 @@
+<div
+  (click)="onSelectCategory()"
+  class="bg-base-100 cursor-pointer overflow-hidden rounded shadow"
+>
+  <figure>
+    <img
+      [src]="category().pictureUrl"
+      [alt]="category().name"
+      class="h-[250px] w-full rounded rounded-b-none object-cover"
+    />
+  </figure>
+  <div class="bg-base-200 p-4 transition-colors">
+    <h2 class="text-center font-semibold">
+      {{ category().name }}
+    </h2>
+  </div>
+</div>

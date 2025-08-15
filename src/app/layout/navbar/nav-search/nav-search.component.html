@@ -1,0 +1,15 @@
+<label class="input w-full rounded-full">
+  <i class="fa-solid fa-magnifying-glass text-base-content/50 h-[1em]"></i>
+
+  <input
+    [(ngModel)]="search"
+    (keydown.Enter)="onSearch()"
+    type="search"
+    class="placeholder:text-base-content grow placeholder:opacity-50"
+    placeholder="{{ 'navbar.searchPlaceholder' | translate }}"
+  />
+
+  <button (click)="onSearch()" class="btn btn-primary btn-circle btn-sm">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+</label>

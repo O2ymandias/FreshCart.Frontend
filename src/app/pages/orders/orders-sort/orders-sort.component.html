@@ -1,0 +1,10 @@
+<select [(ngModel)]="sort" class="select select-sm w-fit rounded-full">
+  <option disabled [ngValue]="undefined">
+    {{ "orders.sort.title" | translate }}
+  </option>
+  @for (opt of sortOptions; track $index) {
+    <option [ngValue]="opt">
+      {{ currentLang() === "en" ? opt.label.en : opt.label.ar }}
+    </option>
+  }
+</select>

@@ -1,0 +1,47 @@
+<section class="my-10 space-y-8 px-12 py-6">
+  <header class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+    <div class="flex items-center space-x-2">
+      <h1 class="text-2xl font-bold">
+        {{ "products.title" | translate }}
+      </h1>
+      <app-product-filter-drawer />
+      <button
+        (click)="reset()"
+        class="btn btn-soft btn-primary btn-sm btn-circle"
+      >
+        <i class="fa-solid fa-arrows-rotate"></i>
+      </button>
+    </div>
+    <app-product-sort />
+  </header>
+  <div
+    class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+  >
+    @for (product of products(); track product.id) {
+      <app-product-card [product]="product" />
+    } @empty {
+      <div class="col-span-full">
+        @let notFound = notFoundTranslationMessage$ | async;
+        <app-notfound-resource
+          [message]="notFound?.title ?? 'No Products Found'"
+        >
+          <p class="text-base-content/75 text-sm">
+            {{ notFound?.description }}
+          </p>
+        </app-notfound-resource>
+      </div>
+    }
+  </div>
+
+  @if (products().length > 0) {
+    <div class="my-4 flex items-center justify-center">
+      <app-pagination
+        [totalPages]="totalPages()"
+        [currPageNumber]="currPageNumber()"
+        [hasNext]="hasNext()"
+        [hasPrevious]="hasPrevious()"
+        (pageChange)="onPageChange($event)"
+      />
+    </div>
+  }
+</section>

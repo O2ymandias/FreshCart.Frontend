@@ -1,0 +1,65 @@
+<div class="bg-base-100 rounded-lg px-4 py-8 shadow-sm">
+  <div
+    class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <div class="space-y-2">
+      <div class="flex items-center gap-4">
+        <p class="text-lg font-semibold">
+          @let orderNumber = order().orderId | dynamicNumber: locale();
+          {{ "orders.orderItem.orderNumber" | translate: { orderNumber } }}
+        </p>
+        <app-order-status [orderStatus]="order().orderStatus" />
+      </div>
+      <p class="text-base-content/50">
+        @let orderDate = order().orderDate | dynamicDate: locale();
+        {{ "orders.orderItem.orderDate" | translate: { orderDate } }}
+      </p>
+    </div>
+    <div class="space-y-2">
+      <p class="text-lg font-semibold">
+        {{ order().total | dynamicNumber: locale() }}
+        <span>
+          {{ "currency.EGP" | translate }}
+        </span>
+      </p>
+      <p class="text-base-content/50">
+        {{
+          "orders.orderItem.itemsCount"
+            | translate: { itemsCount: order().items.length }
+        }}
+      </p>
+    </div>
+  </div>
+  <hr class="border-base-content/25 my-4" />
+  <div class="flex flex-wrap gap-8">
+    @for (orderItem of order().items; track orderItem.id) {
+      <app-order-item [orderItem]="orderItem" />
+    }
+  </div>
+
+  <div class="mt-5 flex gap-4">
+    <button (click)="onShowDetails()" class="btn btn-info btn-outline btn-sm">
+      {{ "orders.orderItem.detailsBtn" | translate }}
+      <i class="fa-solid fa-eye"></i>
+    </button>
+
+    @if (order().orderStatus === "Pending") {
+      <button
+        (click)="retrieveCheckoutSession(order().orderId)"
+        class="btn btn-secondary btn-outline btn-sm"
+      >
+        {{ "orders.orderItem.payBtn" | translate }}
+        <i class="fa-regular fa-credit-card"></i>
+      </button>
+    }
+    @if (order().isCancellable) {
+      <button
+        (click)="cancelOrder(order().orderId)"
+        class="btn btn-error btn-outline btn-sm"
+      >
+        {{ "orders.orderItem.cancelBtn" | translate }}
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,151 @@
+@let p = product();
+@if (p) {
+  <div class="my-10 space-y-6">
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-full md:col-span-4">
+        <div class="flex flex-col items-center gap-y-4">
+          <p-image
+            [src]="p.pictureUrl"
+            [alt]="p.name"
+            [preview]="true"
+            imageClass="w-full sm:h-[400px] sm:w-[300px]"
+          >
+            <ng-template #indicator>
+              <i class="pi pi-search"></i>
+            </ng-template>
+          </p-image>
+          <button
+            [disabled]="galleryLoading()"
+            (click)="displayGallery()"
+            class="btn btn-info btn-outline rounded-full"
+          >
+            <span>
+              {{ "productDetails.galleryBtn" | translate }}
+            </span>
+            <i class="fa-solid fa-images"></i>
+          </button>
+        </div>
+
+        @if (gallery().length > 0) {
+          <div class="flex justify-center">
+            <p-galleria
+              [value]="gallery()"
+              [circular]="true"
+              [fullScreen]="true"
+              [showItemNavigators]="true"
+              [(visible)]="galleryVisible"
+              [showThumbnails]="false"
+              [containerStyle]="{ 'max-width': '75%' }"
+            >
+              <ng-template #item let-item>
+                <img
+                  [src]="item.pictureUrl"
+                  class="h-[90vh] w-[500px] object-cover"
+                />
+              </ng-template>
+            </p-galleria>
+          </div>
+        }
+      </div>
+
+      <div
+        class="bg-base-200 col-span-full space-y-6 rounded px-8 py-4 shadow md:col-span-8"
+      >
+        <h2 class="text-xl font-semibold">{{ p.name }}</h2>
+
+        <p class="text-base-content/75">{{ p.description }}</p>
+
+        <!-- Brand And Category -->
+        <div class="flex space-x-4">
+          <div class="badge badge-soft">
+            {{ p.brand }}
+          </div>
+          <div class="badge badge-soft">
+            {{ p.category }}
+          </div>
+        </div>
+        <!-- Brand And Category -->
+
+        <!-- Stock Status -->
+        <div
+          [class]="{
+            'badge-success': p.inStock,
+            'badge-error': !p.inStock,
+          }"
+          class="badge"
+        >
+          {{ p.inStock ? "In Stock" : "Out Of Stock" }}
+        </div>
+        <!-- Stock Status -->
+
+        <!-- Rating -->
+        <div>
+          <app-average-rating />
+        </div>
+        <!-- Rating -->
+
+        <!-- Price -->
+        <h2 class="flex items-start gap-1 text-2xl font-bold transition-colors">
+          {{ p.price | dynamicNumber: locale() }}
+          <span class="text-base-content/50 text-xs font-semibold">
+            {{ "currency.EGP" | translate }}
+          </span>
+        </h2>
+        <!-- Price -->
+
+        <!-- Actions -->
+        <div class="flex flex-col items-start gap-4">
+          <!-- Add To Cart -->
+          @if (p.inStock) {
+            <button
+              [disabled]="cartLoading()"
+              (click)="addToCart()"
+              class="btn btn-primary btn-outline relative"
+            >
+              {{ "productDetails.addToCartBtn" | translate }}
+              <i class="fa fa-solid fa-shopping-cart"></i>
+
+              @let qty = qtyInCart();
+              @if (qty > 0) {
+                <span class="cart-btn-indicator">
+                  {{ qty | dynamicNumber: locale() }}
+                </span>
+              }
+            </button>
+          }
+          <!-- Add To Cart -->
+
+          <!-- Add To Wishlist -->
+          @if (isAuthenticated()) {
+            <button
+              [disabled]="wishlistLoading()"
+              (click)="addToWishlist()"
+              [class.btn-active]="isFavorite()"
+              class="btn btn-secondary btn-outline"
+            >
+              @if (isFavorite()) {
+                {{ "productDetails.addedToWishlist" | translate }}
+                <i class="fa fa-solid fa-heart"></i>
+              } @else {
+                {{ "productDetails.addToWishlistBtn" | translate }}
+                <i class="fa fa-regular fa-heart"></i>
+              }
+            </button>
+          }
+          <!-- Add To Wishlist -->
+        </div>
+        <!-- Actions -->
+      </div>
+    </div>
+
+    <div>
+      <app-product-reviews [productId]="p.id" />
+    </div>
+  </div>
+} @else {
+  <app-notfound-resource message="There is no such product.">
+    <button [routerLink]="['/products']" class="link link-primary link-hover">
+      Back To Products
+    </button>
+  </app-notfound-resource>
+}

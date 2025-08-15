@@ -1,0 +1,105 @@
+<button
+  (click)="rateUsModal.showModal()"
+  class="btn btn-outline btn-primary btn-circle"
+>
+  <i class="fa-solid fa-pen-to-square"></i>
+</button>
+
+<dialog #rateUsModal class="modal">
+  <div class="modal-box space-y-4">
+    <div class="flex items-center justify-between">
+      <h3 class="text-lg font-bold">
+        {{ "ratings.ratingForm.title" | translate }}
+      </h3>
+      <button
+        (click)="rateUsModal.close()"
+        class="btn btn-sm btn-error btn-outline btn-square"
+      >
+        <i class="fa fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <form class="space-y-4" [formGroup]="rateForm">
+      <div>
+        @let stars = rateForm.controls.stars;
+        <p-rating formControlName="stars" />
+
+        @if (stars.touched && stars.errors) {
+          <ul class="text-error my-2 list-inside list-disc space-y-1 text-xs">
+            <li>Rating is required.</li>
+          </ul>
+        }
+      </div>
+
+      <div>
+        @let title = rateForm.controls.title;
+        @let titlePlaceholder =
+          "ratings.ratingForm.titlePlaceholder" | translate;
+        <input
+          type="text"
+          formControlName="title"
+          [placeholder]="titlePlaceholder"
+          class="input w-full"
+        />
+
+        @if (title.touched && title.errors) {
+          <ul class="text-error my-2 list-inside list-disc space-y-1 text-xs">
+            <li>
+              {{
+                "validations.maxlength"
+                  | translate
+                    : {
+                        field: titlePlaceholder,
+                        max: 50,
+                      }
+              }}
+            </li>
+          </ul>
+        }
+      </div>
+
+      <div>
+        @let comment = rateForm.controls.comment;
+        @let commentPlaceholder =
+          "ratings.ratingForm.commentPlaceholder" | translate;
+        <textarea
+          formControlName="comment"
+          [placeholder]="commentPlaceholder"
+          class="textarea w-full"
+        ></textarea>
+
+        @if (comment.touched && comment.errors) {
+          <ul class="text-error my-2 list-inside list-disc space-y-1 text-xs">
+            <li>
+              {{
+                "validations.maxlength"
+                  | translate
+                    : {
+                        field: commentPlaceholder,
+                        max: 500,
+                      }
+              }}
+            </li>
+          </ul>
+        }
+      </div>
+
+      <button
+        [disabled]="rateLoading()"
+        type="button"
+        class="btn btn-primary"
+        (click)="rate()"
+      >
+        @if (userRating()) {
+          <span>
+            {{ "ratings.ratingForm.updateBtn" | translate }}
+          </span>
+        } @else {
+          <span>
+            {{ "ratings.ratingForm.rateBtn" | translate }}
+          </span>
+        }
+      </button>
+    </form>
+  </div>
+</dialog>

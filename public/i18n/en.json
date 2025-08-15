@@ -1,0 +1,451 @@
+{
+  "navbar": {
+    "title": "Fresh Cart",
+    "searchPlaceholder": "Search products",
+
+    "cart": {
+      "title": "Cart",
+      "subTotal": "Subtotal",
+      "empty": "Your cart is empty",
+      "btn": "View Cart"
+    },
+    "wishlist": {
+      "title": "Wishlist",
+      "empty": "Your wishlist is empty",
+      "items": "Items",
+      "btn": "View Wishlist"
+    },
+    "settings": {
+      "message": "Welcome",
+      "account": "Account",
+      "logout": "Logout",
+      "login": "Login",
+      "register": "Register",
+      "lang": {
+        "en": "English",
+        "ar": "العربية"
+      }
+    }
+  },
+
+  "home": {
+    "banner": {
+      "content": "Limited Time Offer! Enjoy 20% OFF your first purchase.",
+      "link": "Shop Now"
+    },
+    "hero": {
+      "title": "Limited Time Offer! Up to 50% OFF",
+      "description": "Don't Wait. Limited Stock at Unbeatable Prices!",
+      "btn": "Shop Now"
+    },
+    "trendingProducts": {
+      "title": "Trending Products",
+      "link": "View All"
+    },
+    "exploreCategories": {
+      "title": "Explore Categories"
+    },
+
+    "ourServices": {
+      "title": "Our Services",
+      "services": [
+        {
+          "title": "Exclusive Discounts",
+          "description": "Get access to seasonal offers, flash sales, and bundle deals. Sign up and never miss out."
+        },
+        {
+          "title": "Customer Service",
+          "description": "Got questions? Our real humans (not bots!) are here to help you 24/7 with any issues or inquiries."
+        },
+        {
+          "title": "Stripe Payments",
+          "description": "Secure payments powered by Stripe. Your card details are safe, encrypted, and fast to process."
+        },
+        {
+          "title": "Fast Shipping",
+          "description": "Our deliveries are fast, tracked, and efficient because you shouldn’t wait forever for what you love."
+        }
+      ]
+    }
+  },
+
+  "products": {
+    "title": "Explore Products",
+    "filter": {
+      "title": "Filter Products",
+      "searchPlaceholder": "Search Products",
+      "byCategory": "By Category",
+      "byBrand": "By Brand",
+      "price": {
+        "min": "Min Price",
+        "max": "Max Price"
+      },
+      "apply": "Apply Filters",
+      "reset": "Reset",
+      "noSelect": "No Select"
+    },
+    "sort": {
+      "title": "Sort By"
+    },
+    "notFound": {
+      "title": "No Products Found",
+      "description": "Sorry, we couldn't find any products matching your criteria."
+    }
+  },
+
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "shippingCost": "Shipping Cost",
+    "quantity": "Quantity",
+    "clearCartBtn": "Clear Cart",
+    "checkoutBtn": "Checkout",
+    "loginToCheckoutBtn": "Login to Checkout",
+    "continueShoppingBtn": "Continue Shopping",
+    "notFound": {
+      "title": "Your cart is empty"
+    }
+  },
+
+  "paymentSummary": {
+    "title": "Payment Summary",
+    "subTotal": "Subtotal",
+    "shippingCost": "Shipping Cost",
+    "total": "Total",
+    "tax": "Tax"
+  },
+
+  "wishlist": {
+    "title": "Wishlist",
+    "notFound": {
+      "title": "Your wishlist is empty"
+    },
+    "continueShoppingBtn": "Continue Shopping",
+    "clearWishlistBtn": "Clear Wishlist"
+  },
+
+  "checkout": {
+    "title": "checkout",
+    "recipientName": "Recipient Name",
+    "shippingAddress": {
+      "title": "Shipping Address",
+      "street": "Street",
+      "city": "City",
+      "country": "Country"
+    },
+    "phone": "Phone",
+    "email": "Email",
+    "deliveryMethod": {
+      "title": "Delivery Method",
+      "description": "It will take {{time}} to deliver your order. and it will cost {{cost}} {{currency}}"
+    },
+    "paymentMethod": {
+      "title": "Payment Method",
+      "cash": "Cash",
+      "online": "Online"
+    },
+    "placeOrderBtn": "Place Order"
+  },
+
+  "productDetails": {
+    "addToCartBtn": "Add To Cart",
+    "addToWishlistBtn": "Add To Wishlist",
+    "addedToWishlist": "Added",
+    "galleryBtn": "Gallery",
+    "stockStatus": {
+      "inStock": "In Stock",
+      "outOfStock": "Out of Stock"
+    }
+  },
+
+  "ratings": {
+    "title": "Ratings",
+    "totalRatings": "rated this product",
+
+    "ratingForm": {
+      "title": "Rate this product",
+      "titlePlaceholder": "Title",
+      "commentPlaceholder": "Comment",
+      "rateBtn": "Rate",
+      "updateBtn": "Update Rating"
+    },
+
+    "averageRating": {
+      "noRatings": "No ratings yet."
+    },
+
+    "loginToRateBtn": "Login to rate"
+  },
+
+  "validations": {
+    "required": "{{field}} is required.",
+    "maxlength": "{{field}} must not exceed {max} characters.",
+    "pattern": {
+      "phone": "Invalid phone number.",
+      "password": {
+        "requirements": {
+          "title": "Password Requirements:",
+          "rules": [
+            "Password must be at least 6 characters long.",
+            "Password must contain at least one uppercase letter.",
+            "Password must contain at least one lower letter.",
+            "Password must contain at least one number.",
+            "Password must contain at least one special character."
+          ]
+        }
+      },
+      "passwordMatch": "Passwords do not match."
+    },
+    "email": "Invalid email."
+  },
+
+  "account": {
+    "title": "Account Overview",
+    "nav": {
+      "wishlist": "Wishlist",
+      "cart": "Cart",
+      "orders": "Orders",
+      "ratings": "Ratings"
+    },
+    "editProfileModalTitle": "Update Profile",
+    "basicInfo": {
+      "userId": "User ID",
+      "userName": "User Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "address": "Address",
+      "editBtn": "Edit Profile",
+      "editForm": {
+        "basicInfoForm": {
+          "title": "Basic Information",
+          "avatarRequirements": [
+            "Allowed Extensions: (jpg | jpeg | png)",
+            "Max Size: 5MB"
+          ],
+          "avatar": "Avatar",
+          "displayName": "Display Name",
+          "phone": "Phone Number",
+          "address": {
+            "title": "Address",
+            "street": "Street",
+            "city": "City",
+            "country": "Country"
+          }
+        },
+        "passwordForm": {
+          "title": "Password",
+          "currentPassword": "Current Password",
+          "newPassword": "New Password",
+          "confirmNewPassword": "Confirm New Password"
+        },
+        "emailForm": {
+          "title": "Email Address",
+          "newEmail": "New Email",
+          "password": "Password",
+          "verificationCode": "Verification Code",
+          "requestVerificationCodeBtn": "Request Verification Code",
+          "sendVerificationCodeBtn": "Send Code"
+        },
+        "updateBtn": "Update"
+      }
+    },
+    "latestOrders": {
+      "title": "Latest Orders",
+      "viewAll": "View All",
+      "notFound": "No orders yet."
+    },
+    "latestRatings": {
+      "title": "Latest Ratings",
+      "notFound": "No ratings yet."
+    }
+  },
+
+  "auth": {
+    "register": {
+      "title": "Register Now",
+      "displayName": "Display Name",
+      "email": "Email Address",
+      "userName": "User Name",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "phone": "Phone Number",
+      "address": {
+        "title": "Address",
+        "street": "Street",
+        "city": "City",
+        "country": "Country"
+      },
+      "registerBtn": "Register",
+      "loginNavigation": {
+        "title": "Already have an account?",
+        "link": "Login"
+      }
+    },
+    "login": {
+      "title": "Login",
+      "userNameOrEmail": "User Name Or Email",
+      "password": "Password",
+      "loginBtn": "Login",
+      "registerNavigation": {
+        "title": "Don't have an account?",
+        "link": "Register"
+      },
+      "forgotPasswordNavigation": {
+        "title": "Forget Password?",
+        "link": "Forget Password"
+      }
+    },
+    "forgetPassword": {
+      "title": "Forget Password",
+      "email": "Email Address",
+      "sendResetPasswordLinkBtn": "Send Reset Password Link",
+      "loginNavigation": {
+        "title": "Already have an account?",
+        "link": "Login"
+      }
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "resetPasswordBtn": "Reset Password",
+      "loginNavigation": {
+        "link": "Login"
+      }
+    }
+  },
+
+  "orders": {
+    "header": {
+      "title": "Order History",
+      "description": "Track, manage, and view your order history.",
+      "searchPlaceholder": "Search orders by order number"
+    },
+    "filter": {
+      "title": "Filter by"
+    },
+    "sort": {
+      "title": "Sort by"
+    },
+    "orderItem": {
+      "detailsBtn": "Details",
+      "cancelBtn": "Cancel",
+      "payBtn": "Pay Now",
+      "orderNumber": "Order #{{orderNumber}}",
+      "orderDate": "Placed on {{orderDate}}",
+      "itemsCount": "{{itemsCount}} items",
+      "quantity": "Qty: {{quantity}}"
+    },
+    "orderDetails": {
+      "title": "Order Details",
+      "header": {
+        "title": "Thank you for your order."
+      },
+      "basicInfo": {
+        "orderNumber": "Order Number",
+        "date": "Date",
+        "total": "Total"
+      },
+      "shippingInfo": {
+        "title": "Shipping Information",
+        "customer": "Customer",
+        "paymentMethod": "Payment Method",
+        "address": "Address",
+        "paymentStatus": "Payment Status",
+        "phone": "Phone"
+      },
+      "orderItems": {
+        "title": "Order Items"
+      },
+      "paymentSummary": {
+        "title": "Order Summary"
+      }
+    },
+    "notFound": {
+      "title": "No Orders Found"
+    },
+    "orderStatus": {
+      "Pending": "Pending",
+      "Processing": "Processing",
+      "Shipped": "Shipped",
+      "Delivered": "Delivered",
+      "Cancelled": "Cancelled"
+    },
+    "paymentStatus": {
+      "Pending": "Pending",
+      "AwaitingPayment": "Awaiting Payment",
+      "PaymentReceived": "Payment Received",
+      "PaymentFailed": "Payment Failed"
+    },
+    "paymentMethod": {
+      "Cash": "Cash",
+      "Online": "Online"
+    }
+  },
+
+  "modal": {
+    "closeBtn": "Close"
+  },
+
+  "toaster": {
+    "login": {
+      "success": {
+        "summary": "Logged In Successfully"
+      }
+    },
+
+    "register": {
+      "success": {
+        "summary": "Registered Successfully"
+      }
+    },
+
+    "accountUpdate": {
+      "success": {
+        "summary": "Account Updated Successfully"
+      }
+    },
+
+    "wishlist": {
+      "success": {
+        "summary": "Added to wishlist",
+        "detail": "\"{{productName}}\" has been successfully added to your wishlist"
+      }
+    },
+
+    "cart": {
+      "success": {
+        "summary": "Added to cart ({{qty}})",
+        "detail": "\"{{productName}}\" has been successfully added to your cart"
+      }
+    }
+  },
+
+  "confirmationBox": {
+    "wishlist": {
+      "title": "Clear Wishlist",
+      "message": "Are you sure you want to clear your wishlist?",
+      "confirmBtn": "Confirm",
+      "cancelBtn": "Cancel"
+    },
+    "cart": {
+      "title": "Clear Cart",
+      "message": "Are you sure you want to clear your cart?",
+      "confirmBtn": "Confirm",
+      "cancelBtn": "Cancel"
+    }
+  },
+
+  "currency": {
+    "EGP": "EGP"
+  },
+  "pagination": {
+    "tooltip": "Page {{pageNumber}}"
+  },
+
+  "footer": {
+    "companyName": "FreshCart",
+    "companyTagline": "Delivering fresh groceries at your doorstep",
+    "socialTitle": "Follow Us"
+  }
+}

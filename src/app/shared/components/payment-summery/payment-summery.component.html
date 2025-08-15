@@ -1,0 +1,53 @@
+<div class="space-y-4 px-4 py-6 shadow-sm">
+  <div>
+    <ng-content select="header" />
+  </div>
+
+  <ul class="space-y-4 font-medium">
+    <li
+      class="text-base-content/75 flex items-center justify-between gap-4 text-sm"
+    >
+      {{ "paymentSummary.subTotal" | translate }}
+      <span class="text-base-content text-lg font-semibold">
+        {{ subTotal() | dynamicNumber: locale() }}
+      </span>
+    </li>
+    <li
+      class="text-base-content/75 flex items-center justify-between gap-4 text-sm"
+    >
+      {{ "paymentSummary.shippingCost" | translate }}
+      <span class="text-base-content text-lg font-semibold">
+        {{ shippingCost() | dynamicNumber: locale() }}
+      </span>
+    </li>
+    <li
+      class="text-base-content/75 flex items-center justify-between gap-4 text-sm"
+    >
+      {{ "paymentSummary.tax" | translate }}
+      <span class="text-base-content text-lg font-semibold">
+        {{ tax() | dynamicNumber: locale() }}
+      </span>
+    </li>
+    <hr class="border-base-content/25 border" />
+    <li
+      class="text-base-content/75 flex items-center justify-between text-sm font-bold"
+    >
+      <div class="flex items-center gap-2">
+        {{ "paymentSummary.total" | translate }}
+        <i class="fa-solid fa-circle-info text-base-content/75"></i>
+      </div>
+      <p class="flex gap-1">
+        <span class="text-base-content text-lg">
+          {{ total() | dynamicNumber: locale() }}
+        </span>
+        <span class="text-base-content/50 text-xs font-semibold">
+          {{ "currency.EGP" | translate }}
+        </span>
+      </p>
+    </li>
+  </ul>
+
+  <div>
+    <ng-content />
+  </div>
+</div>

@@ -1,0 +1,266 @@
+<div class="bg-base-200 space-y-6 rounded-lg p-10 shadow-sm">
+  <div class="flex flex-col gap-4">
+    <div class="group relative size-28 overflow-hidden rounded-full">
+      <img
+        class="h-full w-full object-cover duration-500 group-hover:brightness-50"
+        [src]="updateAvatarUrl()"
+        alt="update avatar"
+      />
+      <label
+        for="avatarInp"
+        class="bg-base-300 absolute top-1/2 left-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
+        <i class="fa-solid text-base-content fa-camera text-xl"></i>
+        <input
+          (change)="onAvatarUpload($event)"
+          id="avatarInp"
+          type="file"
+          class="sr-only"
+          accept="image/jpeg, image/png, image/jpg"
+        />
+      </label>
+    </div>
+
+    <div class="text-base-content/75 text-xs">
+      @for (requirement of 2 | range; track $index) {
+        <p>
+          {{
+            `account.basicInfo.editForm.basicInfoForm.avatarRequirements.${$index}`
+              | translate
+          }}
+        </p>
+      }
+    </div>
+  </div>
+
+  <form
+    [formGroup]="updateBasicInfoForm"
+    (ngSubmit)="update()"
+    class="space-y-6"
+  >
+    <!-- Display Name -->
+    @let displayName = updateBasicInfoForm.controls.displayName;
+    @let displayNamePlaceholder =
+      "account.basicInfo.editForm.basicInfoForm.displayName" | translate;
+    <div class="space-y-2">
+      <label class="floating-label">
+        <span>{{ displayNamePlaceholder }}</span>
+        <input
+          formControlName="displayName"
+          type="text"
+          class="input input-md w-full"
+          [placeholder]="displayNamePlaceholder"
+          autocomplete="given-name"
+        />
+      </label>
+
+      @if (displayName.touched && displayName.errors) {
+        <ul class="text-error list-inside list-disc space-y-1 text-sm">
+          @if (displayName.hasError("required")) {
+            <li>
+              {{
+                "validations.required"
+                  | translate: { field: displayNamePlaceholder }
+              }}
+            </li>
+          }
+          @if (displayName.hasError("maxlength")) {
+            <li>
+              {{
+                "validations.maxlength"
+                  | translate: { field: displayNamePlaceholder, max: 50 }
+              }}
+            </li>
+          }
+        </ul>
+      }
+    </div>
+    <!-- Display Name -->
+
+    <!-- Phone Number -->
+    @let phoneNumber = updateBasicInfoForm.controls.phoneNumber;
+    @let phonePlaceholder =
+      "account.basicInfo.editForm.basicInfoForm.phone" | translate;
+    <div class="space-y-2">
+      <label class="floating-label">
+        <span>
+          {{ phonePlaceholder }}
+        </span>
+        <input
+          formControlName="phoneNumber"
+          type="text"
+          class="input input-md w-full"
+          [placeholder]="phonePlaceholder"
+          autocomplete="tel"
+        />
+      </label>
+
+      @if (phoneNumber.touched && phoneNumber.errors) {
+        <ul class="text-error list-inside list-disc space-y-1 text-sm">
+          @if (phoneNumber.hasError("required")) {
+            <li>
+              {{
+                "validations.required" | translate: { field: phonePlaceholder }
+              }}
+            </li>
+          }
+          @if (phoneNumber.hasError("pattern")) {
+            <li>
+              {{ "validations.pattern.phone" | translate }}
+            </li>
+          }
+        </ul>
+      }
+    </div>
+    <!-- Phone Number -->
+
+    <!-- Address -->
+    @let address = updateBasicInfoForm.controls.address;
+    <fieldset
+      [formGroup]="updateBasicInfoForm.controls.address"
+      class="fieldset rounded-box border-base-content/25 -mt-4 space-y-4 border p-4"
+    >
+      <legend class="fieldset-legend">
+        {{
+          "account.basicInfo.editForm.basicInfoForm.address.title" | translate
+        }}
+      </legend>
+
+      <!-- Street -->
+      @let street = address.controls.street;
+      @let streetPlaceholder =
+        "account.basicInfo.editForm.basicInfoForm.address.street" | translate;
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ streetPlaceholder }}
+          </span>
+          <input
+            formControlName="street"
+            type="text"
+            class="input input-md w-full"
+            [placeholder]="streetPlaceholder"
+            autocomplete="address-level1"
+          />
+        </label>
+
+        @if (street.touched && street.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            @if (street.hasError("required")) {
+              <li>
+                {{
+                  "validations.required"
+                    | translate: { field: streetPlaceholder }
+                }}
+              </li>
+            }
+
+            @if (street.hasError("maxlength")) {
+              <li>
+                {{
+                  "validations.maxlength"
+                    | translate: { field: streetPlaceholder, max: 50 }
+                }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+      <!-- Street -->
+
+      <!-- City -->
+      @let city = address.controls.city;
+      @let cityPlaceholder =
+        "account.basicInfo.editForm.basicInfoForm.address.city" | translate;
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ cityPlaceholder }}
+          </span>
+          <input
+            formControlName="city"
+            type="text"
+            [placeholder]="cityPlaceholder"
+            class="input input-md w-full"
+            autocomplete="address-level2"
+          />
+        </label>
+
+        @if (city.touched && city.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            @if (city.hasError("required")) {
+              <li>
+                {{
+                  "validations.required" | translate: { field: cityPlaceholder }
+                }}
+              </li>
+            }
+
+            @if (city.hasError("maxlength")) {
+              <li>
+                {{
+                  "validations.maxlength"
+                    | translate: { field: cityPlaceholder, max: 50 }
+                }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+      <!-- City -->
+
+      <!-- Country -->
+      @let country = address.controls.country;
+      @let countryPlaceholder =
+        "account.basicInfo.editForm.basicInfoForm.address.country" | translate;
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ countryPlaceholder }}
+          </span>
+          <input
+            formControlName="country"
+            type="text"
+            [placeholder]="cityPlaceholder"
+            class="input input-md w-full"
+            autocomplete="country-name"
+          />
+        </label>
+
+        @if (country.touched && country.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            @if (country.hasError("required")) {
+              <li>
+                {{
+                  "validations.required"
+                    | translate: { field: countryPlaceholder }
+                }}
+              </li>
+            }
+            @if (country.hasError("maxlength")) {
+              <li>
+                {{
+                  "validations.maxlength"
+                    | translate: { field: countryPlaceholder, max: 50 }
+                }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+      <!-- Country -->
+    </fieldset>
+    <!-- Address -->
+
+    <div class="flex items-center justify-center">
+      <button [disabled]="isLoading()" type="submit" class="btn btn-primary">
+        {{ "account.basicInfo.editForm.updateBtn" | translate }}
+      </button>
+    </div>
+  </form>
+  @if (errorMsg()) {
+    <div role="alert" class="alert alert-error">
+      <span> {{ errorMsg() }} </span>
+    </div>
+  }
+</div>

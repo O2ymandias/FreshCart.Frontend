@@ -1,0 +1,55 @@
+<div class="bg-base-100 space-y-4 rounded p-4 shadow-sm">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="avatar">
+        <div class="w-12 rounded-full">
+          @if (ratingItem().user.pictureUrl) {
+            <img [src]="ratingItem().user.pictureUrl" />
+          } @else {
+            <img src="/anonymous.png" />
+          }
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h4 class="text-sm font-semibold">
+          {{ ratingItem().user.displayName }}
+        </h4>
+
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <p-rating
+            [(ngModel)]="ratingItem().stars"
+            [stars]="5"
+            [readonly]="true"
+            [disabled]="true"
+          />
+          <p class="text-base-content/50 text-xs font-semibold">
+            {{ ratingItem().createdAt | dynamicDate: locale() }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    @if (renderDeleteButton()) {
+      <button
+        (click)="deleteReview()"
+        class="btn btn-error btn-circle btn-sm btn-outline"
+      >
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    }
+  </div>
+
+  <hr class="border-base-content/25" />
+
+  <div class="space-y-4 rounded-lg p-4">
+    <ng-content />
+    <div>
+      <h4 class="text-lg font-semibold">{{ ratingItem().title }}</h4>
+
+      <p class="text-base-content/50 text-sm leading-relaxed">
+        {{ ratingItem().comment }}
+      </p>
+    </div>
+  </div>
+</div>

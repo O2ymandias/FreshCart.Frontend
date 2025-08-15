@@ -1,0 +1,82 @@
+@let profile = userInfo();
+@if (profile) {
+  <div class="bg-base-200 my-6 rounded-lg px-8 py-4 shadow">
+    <div class="mb-4 grid gap-4 sm:grid-cols-2">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-4">
+          <div class="avatar">
+            <div class="w-20 rounded-full shadow-sm">
+              @if (profile.pictureUrl) {
+                <img [src]="profile.pictureUrl" alt="user avatar" />
+              } @else {
+                <img src="/anonymous.png" alt="default user avatar" />
+              }
+            </div>
+          </div>
+          <h2 class="text-xl leading-none font-bold sm:text-2xl">
+            {{ profile.displayName }}
+          </h2>
+        </div>
+        <div class="bg-base-100 rounded px-4 py-2 shadow-sm">
+          <h3 class="font-semibold">
+            {{ "account.basicInfo.userId" | translate }}
+          </h3>
+          <p class="text-base-content/50">
+            {{ profile.userId }}
+          </p>
+        </div>
+        <div class="bg-base-100 rounded px-4 py-2 shadow-sm">
+          <h3 class="font-semibold">
+            {{ "account.basicInfo.userName" | translate }}
+          </h3>
+          <p class="text-base-content/50">
+            {{ profile.userName }}
+          </p>
+        </div>
+        <div class="bg-base-100 rounded px-4 py-2 shadow-sm">
+          <h3 class="font-semibold">
+            {{ "account.basicInfo.email" | translate }}
+          </h3>
+          <p class="text-base-content/50">
+            {{ profile.email }}
+          </p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        @if (profile.phoneNumber) {
+          <div class="bg-base-100 rounded px-4 py-2 shadow-sm">
+            <h3 class="font-semibold">
+              {{ "account.basicInfo.phone" | translate }}
+            </h3>
+            <p class="text-base-content/50">
+              {{ profile.phoneNumber }}
+            </p>
+          </div>
+        }
+        @if (profile.address) {
+          <div class="bg-base-100 rounded px-4 py-2 shadow-sm">
+            <h3 class="font-semibold">
+              {{ "account.basicInfo.address" | translate }}
+            </h3>
+            <p class="text-base-content/50">
+              {{ profile.address.street }}, {{ profile.address.city }},
+              {{ profile.address.country }}
+            </p>
+          </div>
+        }
+      </div>
+    </div>
+    <button (click)="showUpdateProfileModal()" class="btn btn-primary mt-4">
+      <span>
+        {{ "account.basicInfo.editBtn" | translate }}
+      </span>
+    </button>
+  </div>
+}
+
+<app-modal
+  title="{{ 'account.editProfileModalTitle' | translate }}"
+  [(visible)]="updateProfileModalVisible"
+>
+  <app-update-user-profile (updated)="closeUpdateProfileModal()" />
+</app-modal>

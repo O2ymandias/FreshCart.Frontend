@@ -1,0 +1,25 @@
+<div class="bg-base-100 flex items-start gap-4 rounded-lg p-4 max-sm:flex-col">
+  <div class="flex size-16 shrink-0 items-center justify-center rounded-lg">
+    <img
+      [routerLink]="['/products', orderItem().productId]"
+      [src]="orderItem().pictureUrl"
+      [alt]="orderItem().productName"
+      class="size-18 cursor-pointer rounded object-cover"
+    />
+  </div>
+  <div class="flex-1">
+    <h4 class="text-sm font-medium">
+      {{ orderItem().productName }}
+    </h4>
+    @let qty = orderItem().quantity | dynamicNumber: locale();
+    <p class="text-base-content/50 mt-1 text-sm font-medium">
+      {{ "orders.orderItem.quantity" | translate: { quantity: qty } }}
+    </p>
+  </div>
+  <div class="text-right">
+    <p class="font-semibold">
+      {{ orderItem().price | dynamicNumber: locale() }}
+      <span>{{ "currency.EGP" | translate }}</span>
+    </p>
+  </div>
+</div>

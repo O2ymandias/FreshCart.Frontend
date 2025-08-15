@@ -1,0 +1,21 @@
+<div class="space-y-6">
+  <h2 class="text-2xl font-bold">
+    {{ "home.exploreCategories.title" | translate }}
+  </h2>
+
+  <p-carousel
+    [value]="categories()"
+    autoplayInterval="5000"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="false"
+  >
+    <ng-template let-category #item>
+      <div class="px-2">
+        <app-category-card [category]="category" />
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<div class="card"></div>

@@ -1,0 +1,48 @@
+<div class="bg-base-200 rounded-lg p-4">
+  <h3 class="mb-6 text-base font-bold underline underline-offset-4">
+    {{ "orders.orderDetails.shippingInfo.title" | translate }}
+  </h3>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <p class="font-semibold">
+        {{ "orders.orderDetails.shippingInfo.customer" | translate }}
+      </p>
+      <p class="text-base-content/75 mt-2 text-sm font-medium">
+        {{ shippingAddress().recipientName }}
+      </p>
+    </div>
+    <div>
+      <p class="font-semibold">
+        {{ "orders.orderDetails.shippingInfo.paymentMethod" | translate }}
+      </p>
+      <p class="text-base-content/75 mt-2 text-sm font-medium">
+        {{ "orders.paymentMethod." + paymentMethod() | translate }}
+      </p>
+    </div>
+    <div>
+      <p class="font-semibold">
+        {{ "orders.orderDetails.shippingInfo.address" | translate }}
+      </p>
+      <p class="text-base-content/75 mt-2 text-sm font-medium">
+        {{ shippingAddress().street }}, {{ shippingAddress().city }},
+        {{ shippingAddress().country }}
+      </p>
+    </div>
+    <div>
+      <p class="font-semibold">
+        {{ "orders.orderDetails.shippingInfo.paymentStatus" | translate }}
+      </p>
+      <p class="text-base-content/75 mt-2 text-sm font-medium">
+        {{ "orders.paymentStatus." + paymentStatus() | translate }}
+      </p>
+    </div>
+    <div>
+      <p class="font-semibold">
+        {{ "orders.orderDetails.shippingInfo.phone" | translate }}
+      </p>
+      <p class="text-base-content/75 mt-2 text-sm font-medium">
+        {{ shippingAddress().phoneNumber }}
+      </p>
+    </div>
+  </div>
+</div>

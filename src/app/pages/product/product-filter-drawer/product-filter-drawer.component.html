@@ -1,0 +1,111 @@
+<div class="drawer drawer-end">
+  <input id="filter-drawer" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <label
+      (click)="initBrandsAndCategories()"
+      for="filter-drawer"
+      class="btn btn-sm btn-soft btn-primary btn-circle drawer-button"
+    >
+      <i class="fa-solid fa-filter"></i>
+    </label>
+  </div>
+  <div class="drawer-side z-50">
+    <label
+      for="filter-drawer"
+      aria-label="close sidebar"
+      class="drawer-overlay"
+    >
+    </label>
+
+    <div
+      class="menu bg-base-200 text-base-content min-h-full w-80 space-y-4 p-4"
+    >
+      <form
+        [formGroup]="filtrationForm"
+        (ngSubmit)="onFilter()"
+        class="flex flex-col space-y-4"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">
+            {{ "products.filter.title" | translate }}
+          </h3>
+          <label
+            for="filter-drawer"
+            class="btn btn-sm btn-error btn-outline btn-square"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </label>
+        </div>
+
+        <label class="input flex max-w-md">
+          <i class="fa-solid fa-magnifying-glass h-[1em] opacity-50"></i>
+          <input
+            formControlName="search"
+            type="search"
+            placeholder="{{ 'products.filter.searchPlaceholder' | translate }}"
+          />
+        </label>
+
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">
+            {{ "products.filter.byBrand" | translate }}
+          </legend>
+          <select formControlName="brandId" class="select">
+            <option [ngValue]="null">
+              {{ "products.filter.noSelect" | translate }}
+            </option>
+            @for (brand of brands(); track brand.id) {
+              <option [value]="brand.id">{{ brand.name }}</option>
+            }
+          </select>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">
+            {{ "products.filter.byCategory" | translate }}
+          </legend>
+          <select formControlName="categoryId" class="select">
+            <option [ngValue]="null">
+              {{ "products.filter.noSelect" | translate }}
+            </option>
+            @for (category of categories(); track category.id) {
+              <option [value]="category.id">{{ category.name }}</option>
+            }
+          </select>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <div class="flex items-center space-x-2">
+            <input
+              formControlName="minPrice"
+              type="number"
+              class="input w-full"
+              placeholder="{{ 'products.filter.price.min' | translate }}"
+              min="1"
+            />
+
+            <input
+              formControlName="maxPrice"
+              type="number"
+              class="input w-full"
+              placeholder="{{ 'products.filter.price.max' | translate }}"
+              min="1"
+            />
+          </div>
+        </fieldset>
+
+        <div class="flex flex-col items-center justify-between gap-4">
+          <button type="submit" class="btn btn-primary">
+            {{ "products.filter.apply" | translate }}
+            <i class="fa-solid fa-check"></i>
+          </button>
+
+          <button (click)="onResetFilters()" type="button" class="btn btn-soft">
+            {{ "products.filter.reset" | translate }}
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="dropdown dropdown-end">
+  <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+    <div class="indicator">
+      @if (total() > 0) {
+        <i class="fa-solid fa-heart text-secondary text-lg"></i>
+      } @else {
+        <i class="fa-regular fa-heart text-lg"></i>
+      }
+    </div>
+  </div>
+  <div
+    tabindex="0"
+    class="card card-compact dropdown-content bg-base-200 z-1 mt-4 w-52 shadow"
+  >
+    @if (total() > 0) {
+      <div class="card-body">
+        <span class="text-lg font-bold">
+          {{ total() | dynamicNumber: locale() }}
+          {{ "navbar.wishlist.items" | translate }}</span
+        >
+        <div class="card-actions">
+          <button
+            (click)="navigateToWishlist($event)"
+            class="btn btn-secondary btn-block"
+          >
+            {{ "navbar.wishlist.btn" | translate }}
+          </button>
+        </div>
+      </div>
+    } @else {
+      <div role="alert" class="alert alert-soft flex justify-center">
+        <p class="text-center font-medium">
+          {{ "navbar.wishlist.empty" | translate }}
+        </p>
+      </div>
+    }
+  </div>
+</div>

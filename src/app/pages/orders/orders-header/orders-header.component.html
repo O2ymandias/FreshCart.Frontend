@@ -1,0 +1,24 @@
+<header
+  class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+>
+  <div class="space-y-2">
+    <h1 class="text-2xl font-bold">
+      {{ "orders.header.title" | translate }}
+    </h1>
+    <p class="text-base-content/75">
+      {{ "orders.header.description" | translate }}
+    </p>
+  </div>
+
+  <label class="input rounded-full">
+    <i class="fa-solid fa-magnifying-glass h-[1em] opacity-50"></i>
+    <input
+      [(ngModel)]="searchQuery"
+      (input)="search()"
+      class="placeholder:text-base-content placeholder:opacity-75"
+      type="search"
+      required
+      placeholder="{{ 'orders.header.searchPlaceholder' | translate }}"
+    />
+  </label>
+</header>

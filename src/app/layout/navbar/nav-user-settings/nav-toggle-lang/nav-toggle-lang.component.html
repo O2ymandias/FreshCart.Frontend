@@ -1,0 +1,18 @@
+<label class="btn btn-sm">
+  <input class="sr-only" type="checkbox" (change)="toggleLanguage()" />
+
+  <div>
+    <div class="flex items-center justify-center space-x-2">
+      <i class="fa-solid fa-globe"></i>
+      @if (lang() === "en") {
+        <span>
+          {{ "navbar.settings.lang.ar" | translate }}
+        </span>
+      } @else {
+        <span>
+          <span>{{ "navbar.settings.lang.en" | translate }}</span>
+        </span>
+      }
+    </div>
+  </div>
+</label>

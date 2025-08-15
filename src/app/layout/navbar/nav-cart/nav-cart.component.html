@@ -1,0 +1,54 @@
+<div class="dropdown dropdown-end">
+  <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+    <div class="relative flex items-center justify-center">
+      <i class="fa-solid fa-cart-shopping text-lg"></i>
+      @if (count() > 0) {
+        <span
+          class="bg-primary text-primary-content absolute -end-2 -top-2 flex size-5 items-center justify-center rounded-full text-xs font-medium ltr:translate-x-1/2 ltr:-translate-y-1/2 rtl:-translate-x-1/2 rtl:-translate-y-1/2"
+          >{{ count() | dynamicNumber: locale() }}
+        </span>
+      }
+    </div>
+  </div>
+  <div
+    tabindex="0"
+    [class]="{
+      'w-72': count() > 0,
+      'w-52': count() == 0,
+    }"
+    class="card card-compact dropdown-content bg-base-200 z-1 mt-4 shadow"
+  >
+    @if (count() > 0) {
+      <div class="card-body">
+        <div
+          class="text-base-content flex items-center gap-2 text-lg font-semibold"
+        >
+          <div>{{ "navbar.cart.subTotal" | translate }}:</div>
+          <div class="flex items-start gap-1 font-bold">
+            <span>
+              {{ subTotal() | dynamicNumber: locale() }}
+            </span>
+            <span class="text-base-content/50 text-xs font-semibold">
+              {{ "currency.EGP" | translate }}
+            </span>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button
+            (click)="navigateToCart($event)"
+            class="btn btn-primary btn-block"
+          >
+            {{ "navbar.cart.btn" | translate }}
+          </button>
+        </div>
+      </div>
+    } @else {
+      <div role="alert" class="alert alert-soft flex justify-center">
+        <p class="text-center font-medium">
+          {{ "navbar.cart.empty" | translate }}
+        </p>
+      </div>
+    }
+  </div>
+</div>

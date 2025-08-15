@@ -1,0 +1,15 @@
+<div class="flex items-center gap-4">
+  <img
+    [routerLink]="['/products', orderItem().productId]"
+    class="block h-16 w-16 cursor-pointer rounded-lg object-cover"
+    [src]="orderItem().pictureUrl"
+    [alt]="orderItem().pictureUrl"
+  />
+  <div>
+    <p class="font-semibold">{{ orderItem().productName }}</p>
+    @let qty = orderItem().quantity | dynamicNumber: locale();
+    <p class="text-base-content/50">
+      {{ "orders.orderItem.quantity" | translate: { quantity: qty } }}
+    </p>
+  </div>
+</div>

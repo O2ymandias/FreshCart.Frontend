@@ -1,0 +1,15 @@
+<div class="flex items-center gap-2">
+  <p-rating
+    [(ngModel)]="productAverageRating"
+    [stars]="5"
+    [readonly]="true"
+    [disabled]="true"
+  />
+  <span class="text-base-content/50 text-sm font-medium">
+    @if (productAverageRating()) {
+      ({{ productAverageRating() | dynamicNumber: locale() }})
+    } @else {
+      ({{ "ratings.averageRating.noRatings" | translate }})
+    }
+  </span>
+</div>

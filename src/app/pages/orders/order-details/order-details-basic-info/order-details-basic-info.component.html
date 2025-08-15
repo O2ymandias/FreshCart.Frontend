@@ -1,0 +1,29 @@
+<div
+  class="bg-base-200 flex flex-wrap items-center justify-between gap-4 rounded-lg px-4 py-2"
+>
+  <div>
+    <p class="font-semibold">
+      {{ "orders.orderDetails.basicInfo.orderNumber" | translate }}
+    </p>
+    <p class="text-base-content/75 mt-2 text-sm font-medium">
+      #{{ orderId() | dynamicNumber: locale() }}
+    </p>
+  </div>
+  <div>
+    <p class="font-semibold">
+      {{ "orders.orderDetails.basicInfo.date" | translate }}
+    </p>
+    <p class="text-base-content/75 mt-2 text-sm font-medium">
+      {{ orderDate() | dynamicDate: locale() }}
+    </p>
+  </div>
+  <div>
+    <p class="font-semibold">
+      {{ "orders.orderDetails.basicInfo.total" | translate }}
+    </p>
+    <p class="text-base-content/75 mt-2 text-sm font-medium">
+      {{ total() | dynamicNumber: locale() }}
+      <span>{{ "currency.EGP" | translate }}</span>
+    </p>
+  </div>
+</div>

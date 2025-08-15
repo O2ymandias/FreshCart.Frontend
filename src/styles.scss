@@ -1,0 +1,19 @@
+@import "primeicons/primeicons.css";
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.font-cairo {
+  font-family: "Cairo", sans-serif;
+}
+
+.cart-btn-indicator {
+  @apply bg-primary text-primary-content absolute end-0 top-0 flex size-5 items-center justify-center rounded-full text-xs font-medium ltr:translate-x-1/2 ltr:-translate-y-1/2 rtl:-translate-x-1/2 rtl:-translate-y-1/2;
+}

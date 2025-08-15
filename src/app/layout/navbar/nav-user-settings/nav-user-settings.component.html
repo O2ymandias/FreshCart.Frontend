@@ -1,0 +1,56 @@
+<div class="dropdown dropdown-end">
+  <div
+    tabindex="0"
+    role="button"
+    class="btn btn-ghost btn-circle flex items-center justify-center"
+  >
+    <i class="fa-solid fa-user fa-lg"></i>
+  </div>
+  <ul
+    tabindex="0"
+    class="dropdown-content menu bg-base-200 rounded-box z-1 mt-4 w-52 space-y-2 p-2 shadow-sm"
+  >
+    @if (isAuthenticated()) {
+      <p class="text-base-content rounded px-6 py-3 font-medium shadow-sm">
+        <span class="me-1">{{ "navbar.settings.message" | translate }}</span>
+        <span class="font-bold">{{ displayName() }}</span>
+      </p>
+      <li>
+        <button class="btn btn-sm" (click)="navigateTo($event, ['account'])">
+          <span>{{ "navbar.settings.account" | translate }}</span>
+          <i class="fa-solid fa-user"></i>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-sm" (click)="logout($event)">
+          <span>{{ "navbar.settings.logout" | translate }}</span>
+          <i
+            [class.rotate-180]="currLang() === 'ar'"
+            class="fa-solid fa-right-to-bracket"
+          ></i>
+        </button>
+      </li>
+    } @else {
+      <li>
+        <button
+          class="btn btn-sm"
+          (click)="navigateTo($event, ['auth', 'login'])"
+        >
+          {{ "navbar.settings.login" | translate }}
+        </button>
+      </li>
+      <li>
+        <button
+          class="btn btn-sm"
+          (click)="navigateTo($event, ['auth', 'register'])"
+        >
+          {{ "navbar.settings.register" | translate }}
+        </button>
+      </li>
+    }
+    <div class="flex items-center justify-between">
+      <app-nav-toggle-mode />
+      <app-nav-toggle-lang />
+    </div>
+  </ul>
+</div>

@@ -1,0 +1,37 @@
+<div class="tabs tabs-lift">
+  @let basicInfoTap =
+    "account.basicInfo.editForm.basicInfoForm.title" | translate;
+  <input
+    type="radio"
+    name="update-profile"
+    class="tab"
+    [attr.aria-label]="basicInfoTap"
+    checked="checked"
+  />
+  <div class="tab-content border-base-300 p-6">
+    <app-update-basic-info (updated)="onUpdate()" />
+  </div>
+
+  @let passwordTap =
+    "account.basicInfo.editForm.passwordForm.title" | translate;
+  <input
+    type="radio"
+    name="update-profile"
+    class="tab"
+    [attr.aria-label]="passwordTap"
+  />
+  <div class="tab-content border-base-300 p-6">
+    <app-update-password (updated)="onUpdate()" />
+  </div>
+
+  @let emailTap = "account.basicInfo.editForm.emailForm.title" | translate;
+  <input
+    type="radio"
+    name="update-profile"
+    class="tab"
+    [attr.aria-label]="emailTap"
+  />
+  <div class="tab-content border-base-300 p-6">
+    <app-update-email (updated)="onUpdate()" />
+  </div>
+</div>

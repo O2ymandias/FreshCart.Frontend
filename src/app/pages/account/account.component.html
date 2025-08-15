@@ -1,0 +1,55 @@
+<section class="text-base-content py-8 antialiased">
+  <div class="mx-auto max-w-screen-lg space-y-6 px-4">
+    <h1 class="mb-4 text-2xl font-bold">
+      {{ "account.title" | translate }}
+    </h1>
+
+    <div>
+      <app-account-nav (scroll)="scrollTo($event)" />
+    </div>
+
+    <div>
+      <app-account-info />
+    </div>
+
+    <div
+      #latestOrders
+      class="bg-base-200 space-y-6 rounded-lg px-8 py-4 shadow"
+    >
+      <div class="flex items-center justify-between">
+        <h3 class="text-2xl font-semibold">
+          {{ "account.latestOrders.title" | translate }}
+        </h3>
+
+        <a
+          [routerLink]="['/orders']"
+          class="link link-primary flex items-center gap-2 font-medium no-underline"
+        >
+          <span>{{ "account.latestOrders.viewAll" | translate }}</span>
+          <i
+            [class]="{
+              'fa-arrow-right': currLang() === 'en',
+              'fa-arrow-left': currLang() === 'ar',
+            }"
+            class="fa-solid"
+          ></i>
+        </a>
+      </div>
+
+      <app-account-latest-orders />
+    </div>
+
+    <div
+      #latestRatings
+      class="bg-base-200 space-y-6 rounded-lg px-8 py-4 shadow"
+    >
+      <div class="flex items-center justify-between">
+        <h3 class="text-2xl font-semibold">
+          {{ "account.latestRatings.title" | translate }}
+        </h3>
+      </div>
+
+      <app-account-latest-reviews />
+    </div>
+  </div>
+</section>

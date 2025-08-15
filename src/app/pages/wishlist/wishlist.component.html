@@ -1,0 +1,45 @@
+<section class="my-10 space-y-8 px-12 py-6">
+  @if (wishlistItems().length > 0) {
+    <header class="flex items-center justify-between">
+      <h1 class="flex items-center space-x-4 text-2xl font-bold">
+        <span>
+          {{ "wishlist.title" | translate }}
+        </span>
+        <span class="badge badge-secondary font-medium">
+          {{ total() | dynamicNumber: locale() }}
+        </span>
+      </h1>
+      <button (click)="clearWishlist()" class="btn btn-error btn-outline">
+        {{ "wishlist.clearWishlistBtn" | translate }}
+        <i class="fa-solid fa-trash ms-2"></i>
+      </button>
+    </header>
+    <div
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      @for (item of wishlistItems(); track item.product.id) {
+        <app-product-card [product]="item.product" />
+      }
+    </div>
+
+    <div class="flex items-center justify-center">
+      <app-pagination
+        [currPageNumber]="pageNumber()"
+        [totalPages]="totalPages()"
+        [hasNext]="hasNext()"
+        [hasPrevious]="hasPrevious()"
+        (pageChange)="onPageChange($event)"
+      />
+    </div>
+  } @else {
+    @let notFound = notFoundTranslationMessage$ | async;
+    <app-notfound-resource
+      [message]="notFound?.title ?? 'Your wishlist is empty'"
+    >
+      <a class="btn btn-soft" [routerLink]="['/']">
+        {{ "wishlist.continueShoppingBtn" | translate }}
+        <i class="fa-solid fa-shopping-cart ms-2"></i>
+      </a>
+    </app-notfound-resource>
+  }
+</section>

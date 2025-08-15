@@ -1,0 +1,45 @@
+<section class="py-8 antialiased md:py-16">
+  <div
+    class="mx-auto grid max-w-screen-xl px-4 pb-8 md:grid-cols-12 lg:gap-12 lg:pb-16 xl:gap-0"
+  >
+    <div class="content-center justify-self-start md:col-span-7 md:text-start">
+      <h1
+        class="mb-4 text-4xl leading-none font-extrabold tracking-tight md:max-w-2xl md:text-5xl xl:text-6xl"
+      >
+        {{ "home.hero.title" | translate }}
+      </h1>
+      <p
+        class="text-base-content/75 mb-4 max-w-2xl md:mb-12 md:text-lg lg:mb-5 lg:text-xl"
+      >
+        {{ "home.hero.description" | translate }}
+      </p>
+      <a routerLink="/products" class="btn btn-primary px-8 py-4">
+        {{ "home.hero.btn" | translate }}
+      </a>
+    </div>
+    <div class="hidden md:col-span-5 md:mt-0 md:flex">
+      <img
+        class="dark:hidden"
+        src="/hero-light.svg"
+        alt="shopping illustration"
+      />
+      <img
+        class="hidden dark:block"
+        src="/hero-dark.svg"
+        alt="shopping illustration"
+      />
+    </div>
+  </div>
+  <div
+    class="mx-auto grid max-w-screen-xl grid-cols-2 gap-8 px-4 sm:grid-cols-3 sm:gap-12 lg:grid-cols-6"
+  >
+    @for (brand of brands() | slice: 0 : 6; track brand.id) {
+      <div
+        (click)="onSelectBrand(brand.id)"
+        class="btn btn-lg btn-soft btn-wide"
+      >
+        {{ brand.name }}
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<div class="flex items-center gap-2">
+  <span class="text-base-content/50 font-medium">
+    {{ "orders.filter.title" | translate }}:</span
+  >
+  <form class="gap-y-2 filter">
+    <input
+      class="btn filter-reset filter-reset__customized btn-error btn-outline btn-sm rounded-full"
+      type="radio"
+      [value]="undefined"
+      (click)="reset()"
+    />
+
+    @for (filterOpt of filterOptions; track $index) {
+      <input
+        [(ngModel)]="filter"
+        [ngModelOptions]="{ standalone: true }"
+        class="btn btn-info btn-outline btn-sm rounded-full"
+        type="radio"
+        [value]="filterOpt.value"
+        [attr.aria-label]="
+          currentLang() === 'en' ? filterOpt.label.en : filterOpt.label.ar
+        "
+      />
+    }
+  </form>
+</div>

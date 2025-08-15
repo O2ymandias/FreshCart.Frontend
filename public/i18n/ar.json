@@ -1,0 +1,449 @@
+{
+  "navbar": {
+    "title": "فريش كارت",
+    "searchPlaceholder": "ابحث عن المنتجات",
+    "cart": {
+      "title": "السلة",
+      "subTotal": "الإجمالي الجزئى",
+      "empty": "سلتك فارغة",
+      "btn": "عرض السلة"
+    },
+    "wishlist": {
+      "title": "قائمة الرغبات",
+      "empty": "قائمة الرغبات فارغة",
+      "items": "من العناصر",
+      "btn": "عرض القائمة"
+    },
+    "settings": {
+      "message": "مرحبًا",
+      "account": "الحساب",
+      "logout": "تسجيل الخروج",
+      "login": "تسجيل الدخول",
+      "register": "إنشاء حساب",
+      "lang": {
+        "en": "English",
+        "ar": "العربية"
+      }
+    }
+  },
+
+  "home": {
+    "banner": {
+      "content": "عرض لفترة محدودة! استمتع بخصم 20٪ على أول عملية شراء لك.",
+      "link": "تسوق الآن"
+    },
+    "hero": {
+      "title": "عرض لفترة محدودة! خصم حتى 50٪",
+      "description": "لا تنتظر. الكمية محدودة والأسعار لا تُقاوم!",
+      "btn": "تسوق الآن"
+    },
+    "trendingProducts": {
+      "title": "المنتجات الرائجة",
+      "link": "عرض الكل"
+    },
+    "exploreCategories": {
+      "title": "استكشاف الفئات"
+    },
+    "ourServices": {
+      "title": "خدماتنا",
+      "services": [
+        {
+          "title": "خصومات حصرية",
+          "description": "احصل على عروض موسمية، وخصومات فلاش، وصفقات مجمعة. سجّل الآن ولا تفوّت الفرصة."
+        },
+        {
+          "title": "خدمة العملاء",
+          "description": "هل لديك أسئلة؟ موظفونا الحقيقيون (وليس روبوتات!) هنا لمساعدتك على مدار الساعة في أي استفسار أو مشكلة."
+        },
+        {
+          "title": "مدفوعات Stripe",
+          "description": "مدفوعات آمنة من خلال Stripe. تفاصيل بطاقتك آمنة، مشفرة، وسريعة المعالجة."
+        },
+        {
+          "title": "شحن سريع",
+          "description": "توصيلاتنا سريعة، وتتبعها سهل، وفعالة  لأنك لا يجب أن تنتظر طويلاً لما تحب."
+        }
+      ]
+    }
+  },
+
+  "products": {
+    "title": "استكشف المنتجات",
+    "filter": {
+      "title": "تصفية المنتجات",
+      "searchPlaceholder": "بحث عن المنتجات",
+      "byCategory": "حسب الفئة",
+      "byBrand": "حسب العلامة التجارية",
+      "price": {
+        "min": "أقل سعر",
+        "max": "أعلى سعر"
+      },
+      "apply": "تطبيق الفلاتر",
+      "reset": "إعادة التعيين",
+      "noSelect": "لا تحدد"
+    },
+    "sort": {
+      "title": "ترتيب حسب"
+    },
+    "notFound": {
+      "title": "لا يوجد منتجات",
+      "description": "عذراً، لا توجد منتجات تتطابق مع معاييرك."
+    }
+  },
+
+  "cart": {
+    "title": "عربة التسوق",
+    "empty": "سلة التسوق فارغة",
+    "shippingCost": "تكلفة الشحن",
+    "quantity": "الكمية",
+    "clearCartBtn": "إفراغ السلة",
+    "checkoutBtn": "إتمام الشراء",
+    "loginToCheckoutBtn": "يرجى تسجيل الدخول للاستمرار",
+    "continueShoppingBtn": "متابعة التسوق",
+    "notFound": {
+      "title": "سلتك فارغة"
+    }
+  },
+
+  "paymentSummary": {
+    "title": "ملخص الدفع",
+    "subTotal": "الإجمالي الجزئى",
+    "shippingCost": "تكلفة الشحن",
+    "total": "الإجمالي الكلي",
+    "tax": "الضريبة"
+  },
+
+  "wishlist": {
+    "title": "قائمة الرغبات",
+    "notFound": {
+      "title": "قائمة الرغبات فارغة"
+    },
+    "continueShoppingBtn": "متابعة التسوق",
+    "clearWishlistBtn": "إفراغ قائمة الرغبات"
+  },
+
+  "checkout": {
+    "title": "إتمام الشراء",
+    "recipientName": "اسم المستلم",
+    "shippingAddress": {
+      "title": "عنوان الشحن",
+      "street": "الشارع",
+      "city": "المدينة",
+      "country": "الدولة"
+    },
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "deliveryMethod": {
+      "title": "طريقة التوصيل",
+      "description": "سوف تستغرق {{time}} لتوصيل الطلب. وسوف يتكلف {{cost}} {{currency}}"
+    },
+    "paymentMethod": {
+      "title": "طريقة الدفع",
+      "cash": "كاش",
+      "online": "اونلاين"
+    },
+    "placeOrderBtn": "تأكيد الطلب"
+  },
+
+  "productDetails": {
+    "addToCartBtn": "أضف إلى السلة",
+    "addToWishlistBtn": "أضف إلى المفضلة",
+    "addedToWishlist": "تمت الإضافة",
+    "galleryBtn": "المعرض",
+    "stockStatus": {
+      "inStock": "متوفر",
+      "outOfStock": "غير متوفر"
+    }
+  },
+
+  "ratings": {
+    "title": "التقييمات",
+    "totalRatings": "قاموا بتقييم هذا المنتج",
+
+    "ratingForm": {
+      "title": "قيّم هذا المنتج",
+      "titlePlaceholder": "العنوان",
+      "commentPlaceholder": "التعليق",
+      "rateBtn": "قيّم",
+      "updateBtn": "تحديث التقييم"
+    },
+
+    "averageRating": {
+      "noRatings": "لا يوجد تقييمات حتى الان"
+    },
+
+    "loginToRateBtn": "تسجيل الدخول للقيام بالتقييم"
+  },
+
+  "account": {
+    "title": "نظرة عامة على الحساب",
+    "nav": {
+      "wishlist": "المفضلة",
+      "cart": "عربة التسوق",
+      "orders": "الطلبات",
+      "ratings": "التقييمات"
+    },
+    "editProfileModalTitle": "تحديث الملف الشخصي",
+    "basicInfo": {
+      "userId": "معرّف المستخدم",
+      "userName": "اسم المستخدم",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "address": "العنوان",
+      "editBtn": "تعديل الملف الشخصي",
+      "editForm": {
+        "basicInfoForm": {
+          "title": "المعلومات الأساسية",
+          "avatarRequirements": [
+            "الامتدادات المسموح بها: (jpg | jpeg | png)",
+            "الحجم الأقصى: 5 ميجابايت"
+          ],
+          "avatar": "الصورة الشخصية",
+          "displayName": "اسم العرض",
+          "phone": "رقم الهاتف",
+          "address": {
+            "title": "العنوان",
+            "street": "الشارع",
+            "city": "المدينة",
+            "country": "الدولة"
+          }
+        },
+        "passwordForm": {
+          "title": "كلمة المرور",
+          "currentPassword": "كلمة المرور الحالية",
+          "newPassword": "كلمة المرور الجديدة",
+          "confirmNewPassword": "تاكيد كلمة المرور الجديدة"
+        },
+        "emailForm": {
+          "title": "البريد الإلكتروني",
+          "newEmail": "البريد الإلكتروني الجديد",
+          "password": "كلمة المرور",
+          "verificationCode": "كود التحقق",
+          "requestVerificationCodeBtn": "ارسال كود التحقق",
+          "sendVerificationCodeBtn": "ارسال كود التحقق"
+        },
+        "updateBtn": "تحديث"
+      }
+    },
+    "latestOrders": {
+      "title": "احدث الطلبات",
+      "viewAll": "اظهار الكل",
+      "notFound": "لا يوجد طلبات حتى الان"
+    },
+    "latestRatings": {
+      "title": "احدث التقييمات",
+      "notFound": "لا يوجد تقييمات حتى الان"
+    }
+  },
+
+  "orders": {
+    "header": {
+      "title": "سجل الطلبات",
+      "description": "تتبع وأدر واستعرض سجل طلباتك.",
+      "searchPlaceholder": "ابحث عن الطلب برقم الطلب"
+    },
+    "filter": {
+      "title": "تصفية حسب"
+    },
+    "sort": {
+      "title": "ترتيب حسب"
+    },
+    "orderItem": {
+      "detailsBtn": "التفاصيل",
+      "cancelBtn": "إلغاء",
+      "payBtn": "ادفع الآن",
+      "orderNumber": "طلب رقم #{{orderNumber}}",
+      "orderDate": "تم الطلب في {{orderDate}}",
+      "itemsCount": "{{itemsCount}} عنصرًا",
+      "quantity": "الكمية: {{quantity}}"
+    },
+    "orderDetails": {
+      "title": "تفاصيل الطلب",
+      "header": {
+        "title": "شكرًا لطلبك."
+      },
+      "basicInfo": {
+        "orderNumber": "رقم الطلب",
+        "date": "التاريخ",
+        "total": "الإجمالي"
+      },
+      "shippingInfo": {
+        "title": "معلومات الشحن",
+        "customer": "العميل",
+        "paymentMethod": "طريقة الدفع",
+        "address": "العنوان",
+        "paymentStatus": "حالة الدفع",
+        "phone": "الهاتف"
+      },
+      "orderItems": {
+        "title": "عناصر الطلب"
+      },
+      "paymentSummary": {
+        "title": "ملخص الطلب"
+      }
+    },
+    "notFound": {
+      "title": "لم يتم العثور على طلبات"
+    },
+    "orderStatus": {
+      "Pending": "في انتظار المعالجة",
+      "Processing": "قيد التجهيز",
+      "Shipped": "تم الشحن",
+      "Delivered": "تم التوصيل",
+      "Cancelled": "تم الإلغاء"
+    },
+    "paymentStatus": {
+      "Pending": "قيد الانتظار",
+      "AwaitingPayment": "في انتظار الدفع",
+      "PaymentReceived": "تم استلام الدفع",
+      "PaymentFailed": "فشل الدفع"
+    },
+    "paymentMethod": {
+      "Cash": "كاش",
+      "Online": "اونلاين"
+    }
+  },
+
+  "validations": {
+    "required": "{{field}} مطلوب.",
+    "maxlength": "يجب ألا يتجاوز {{field}} {{max}} حرفًا.",
+    "pattern": {
+      "phone": "رقم الهاتف غير صحيح.",
+      "password": {
+        "requirements": {
+          "title": "متطلبات كلمة المرور:",
+          "rules": [
+            "كلمة المرور يجب ان تكون على الاقل 6 حروف.",
+            "كلمة المرور يجب ان تحتوي على حرف كبير.",
+            "كلمة المرور يجب ان تحتوي على حرف صغير.",
+            "كلمة المرور يجب ان تحتوي على رقم.",
+            "كلمة المرور يجب ان تحتوي على حرف خاص."
+          ]
+        }
+      },
+      "passwordMatch": "كلمة المرور غير متطابقة."
+    },
+    "email": "البريد الإلكتروني غير صحيح."
+  },
+
+  "auth": {
+    "register": {
+      "title": "سجّل الان",
+      "displayName": "اسم العرض",
+      "email": "عنوان البريد الإلكتروني",
+      "userName": "اسم المستخدم",
+      "password": "كلمة المرور",
+      "confirmPassword": "تاكيد كلمة المرور",
+      "phone": "رقم الهاتف",
+      "address": {
+        "title": "العنوان",
+        "street": "الشارع",
+        "city": "المدينة",
+        "country": "الدولة"
+      },
+      "registerBtn": "سجّل",
+      "loginNavigation": {
+        "title": "لديك حساب؟",
+        "link": "تسجيل الدخول"
+      }
+    },
+    "login": {
+      "title": "تسجيل الدخول",
+      "userNameOrEmail": "اسم المستخدم او البريد الالكتروني",
+      "password": "كلمة المرور",
+      "loginBtn": "تسجيل الدخول",
+      "registerNavigation": {
+        "title": "ليس لديك حساب؟",
+        "link": "سجّل الان"
+      },
+      "forgotPasswordNavigation": {
+        "title": "نسيت كلمة المرور؟",
+        "link": "استعادة كلمة المرور"
+      }
+    },
+    "forgetPassword": {
+      "title": "نسيت كلمة المرور؟",
+      "email": "البريد الإلكتروني",
+      "sendResetPasswordLinkBtn": "ارسال رابط استعادة كلمة المرور",
+      "loginNavigation": {
+        "title": "لديك حساب؟",
+        "link": "تسجيل الدخول"
+      }
+    },
+    "resetPassword": {
+      "title": "استعادة كلمة المرور",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmNewPassword": "تاكيد كلمة المرور الجديدة",
+      "resetPasswordBtn": "استعادة كلمة المرور",
+      "loginNavigation": {
+        "link": "تسجيل الدخول"
+      }
+    }
+  },
+
+  "modal": {
+    "closeBtn": "اغلاق"
+  },
+
+  "toaster": {
+    "login": {
+      "success": {
+        "summary": "تم تسجيل الدخول بنجاح"
+      }
+    },
+
+    "register": {
+      "success": {
+        "summary": "تم التسجيل بنجاح"
+      }
+    },
+
+    "accountUpdate": {
+      "success": {
+        "summary": "تم تحديث الحساب بنجاح"
+      }
+    },
+
+    "wishlist": {
+      "success": {
+        "summary": "تمت الإضافة إلى قائمة الرغبات",
+        "detail": "تمت إضافة \"{{productName}}\" إلى قائمة الرغبات بنجاح"
+      }
+    },
+
+    "cart": {
+      "success": {
+        "summary": "تمت الإضافة إلى السلة ({{qty}})",
+        "detail": "تمت إضافة \"{{productName}}\" إلى سلة التسوق بنجاح"
+      }
+    }
+  },
+
+  "confirmationBox": {
+    "wishlist": {
+      "title": "تفريغ قائمة الرغبات",
+      "message": "هل أنت متأكد أنك تريد تفريغ قائمة الرغبات؟",
+      "confirmBtn": "تأكيد",
+      "cancelBtn": "إلغاء"
+    },
+    "cart": {
+      "title": "تفريغ السلة",
+      "message": "هل أنت متأكد أنك تريد تفريغ السلة؟",
+      "confirmBtn": "تأكيد",
+      "cancelBtn": "إلغاء"
+    }
+  },
+
+  "currency": {
+    "EGP": "جنيه"
+  },
+
+  "pagination": {
+    "tooltip": "الصفحة {{pageNumber}}"
+  },
+  "footer": {
+    "companyName": "متجر فريش كارت",
+    "companyTagline": "نوفر لك البقالة الطازجة إلى باب منزلك",
+    "socialTitle": "تابعنا"
+  }
+}

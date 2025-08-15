@@ -1,0 +1,21 @@
+<section class="my-10 space-y-10">
+  <div>
+    <app-home-header />
+  </div>
+
+  <div>
+    <app-home-trending-products />
+  </div>
+
+  <div #homeCategories>
+    @defer (on viewport(homeCategories)) {
+      <app-home-categories />
+    }
+  </div>
+
+  <div #homeServices>
+    @defer (on viewport(homeServices)) {
+      <app-home-services />
+    }
+  </div>
+</section>

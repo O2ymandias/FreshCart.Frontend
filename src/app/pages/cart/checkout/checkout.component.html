@@ -1,0 +1,323 @@
+<div class="bg-base-200 mx-auto max-w-2xl space-y-4 rounded-lg p-10">
+  <form [formGroup]="checkoutForm" class="space-y-4">
+    <!-- Shipping Address -->
+    @let address = checkoutForm.controls.shippingAddress;
+    <div [formGroup]="address" class="space-y-4">
+      <!-- Recipient Name -->
+      @let recipientName =
+        checkoutForm.controls.shippingAddress.controls.recipientName;
+      @let recipientNamePlaceholder = "checkout.recipientName" | translate;
+
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ recipientNamePlaceholder }}
+          </span>
+          <input
+            formControlName="recipientName"
+            type="text"
+            class="input input-md w-full"
+            [placeholder]="recipientNamePlaceholder"
+            autocomplete="nickname"
+          />
+        </label>
+        @if (recipientName.touched && recipientName.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            @if (recipientName.hasError("required")) {
+              <li>
+                {{
+                  "validations.required"
+                    | translate: { field: recipientNamePlaceholder }
+                }}
+              </li>
+            }
+            @if (recipientName.hasError("maxlength")) {
+              <li>
+                {{
+                  "validations.maxlength"
+                    | translate: { field: recipientNamePlaceholder, max: 50 }
+                }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+      <!-- Recipient Name -->
+
+      <!-- Phone Number -->
+      @let phoneNumber =
+        checkoutForm.controls.shippingAddress.controls.phoneNumber;
+      @let phoneNumberPlaceholder = "checkout.phone" | translate;
+
+      <div class="space-y-2">
+        <label class="floating-label">
+          <span>
+            {{ phoneNumberPlaceholder }}
+          </span>
+          <input
+            formControlName="phoneNumber"
+            type="text"
+            class="input input-md w-full"
+            [placeholder]="phoneNumberPlaceholder"
+            autocomplete="tel"
+          />
+        </label>
+
+        @if (phoneNumber.touched && phoneNumber.errors) {
+          <ul class="text-error list-inside list-disc space-y-1 text-sm">
+            @if (phoneNumber.hasError("required")) {
+              <li>
+                {{
+                  "validations.required"
+                    | translate: { field: phoneNumberPlaceholder }
+                }}
+              </li>
+            }
+            @if (phoneNumber.hasError("pattern")) {
+              <li>
+                {{
+                  "validations.pattern.phone"
+                    | translate: { field: phoneNumberPlaceholder }
+                }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+      <!-- Phone Number -->
+
+      <!-- Address -->
+      @let shippingAddressTitle = "checkout.shippingAddress.title" | translate;
+      <fieldset
+        class="fieldset rounded-box border-base-content/25 space-y-4 border p-4"
+      >
+        <legend class="fieldset-legend">
+          {{ shippingAddressTitle }}
+        </legend>
+
+        <!-- Street -->
+        @let street = address.controls.street;
+        @let streetPlaceholder = "checkout.shippingAddress.street" | translate;
+        <div class="space-y-2">
+          <label class="floating-label">
+            <span>
+              {{ streetPlaceholder }}
+            </span>
+            <input
+              formControlName="street"
+              type="text"
+              class="input input-md w-full"
+              [placeholder]="streetPlaceholder"
+              autocomplete="address-level1"
+            />
+          </label>
+
+          @if (street.touched && street.errors) {
+            <ul class="text-error list-inside list-disc space-y-1 text-sm">
+              @if (street.hasError("required")) {
+                <li>
+                  {{
+                    "validations.required"
+                      | translate: { field: streetPlaceholder }
+                  }}
+                </li>
+              }
+
+              @if (street.hasError("maxlength")) {
+                <li>
+                  {{
+                    "validations.maxlength"
+                      | translate: { field: streetPlaceholder, max: 50 }
+                  }}
+                </li>
+              }
+            </ul>
+          }
+        </div>
+        <!-- Street -->
+
+        <!-- City -->
+        @let city = address.controls.city;
+        @let cityPlaceholder = "checkout.shippingAddress.city" | translate;
+        <div class="space-y-2">
+          <label class="floating-label">
+            <span>
+              {{ cityPlaceholder }}
+            </span>
+            <input
+              formControlName="city"
+              type="text"
+              [placeholder]="cityPlaceholder"
+              class="input input-md w-full"
+              autocomplete="address-level2"
+            />
+          </label>
+
+          @if (city.touched && city.errors) {
+            <ul class="text-error list-inside list-disc space-y-1 text-sm">
+              @if (city.hasError("required")) {
+                <li>
+                  {{
+                    "validations.required"
+                      | translate: { field: cityPlaceholder }
+                  }}
+                </li>
+              }
+
+              @if (city.hasError("maxlength")) {
+                <li>
+                  {{
+                    "validations.maxlength"
+                      | translate: { field: cityPlaceholder, max: 50 }
+                  }}
+                </li>
+              }
+            </ul>
+          }
+        </div>
+        <!-- City -->
+
+        <!-- Country -->
+        @let country = address.controls.country;
+        @let countryPlaceholder =
+          "checkout.shippingAddress.country" | translate;
+        <div class="space-y-2">
+          <label class="floating-label">
+            <span>
+              {{ countryPlaceholder }}
+            </span>
+            <input
+              formControlName="country"
+              type="text"
+              [placeholder]="countryPlaceholder"
+              class="input input-md w-full"
+              autocomplete="country-name"
+            />
+          </label>
+
+          @if (country.touched && country.errors) {
+            <ul class="text-error list-inside list-disc space-y-1 text-sm">
+              @if (country.hasError("required")) {
+                <li>
+                  {{
+                    "validations.required"
+                      | translate: { field: countryPlaceholder }
+                  }}
+                </li>
+              }
+              @if (country.hasError("maxlength")) {
+                <li>
+                  {{
+                    "validations.maxlength"
+                      | translate: { field: countryPlaceholder, max: 50 }
+                  }}
+                </li>
+              }
+            </ul>
+          }
+        </div>
+        <!-- Country -->
+      </fieldset>
+      <!-- Address -->
+    </div>
+    <!-- Shipping Address -->
+
+    <!-- Delivery Method -->
+    <fieldset class="fieldset rounded-box border-base-content/25 border p-4">
+      <legend class="fieldset-legend">
+        {{ "checkout.deliveryMethod.title" | translate }}
+      </legend>
+      <div class="space-y-4">
+        @for (deliveryMethod of deliveryMethods(); track deliveryMethod.id) {
+          <label
+            [htmlFor]="deliveryMethod.id"
+            class="hover:bg-base-100 ring-base-content/10 flex cursor-pointer items-center gap-4 rounded-lg p-2 shadow ring transition-colors"
+          >
+            <input
+              formControlName="deliveryMethod"
+              type="radio"
+              class="radio radio-xs"
+              [id]="deliveryMethod.id"
+              [value]="deliveryMethod.id"
+            />
+            <div>
+              <p class="text-sm font-semibold">
+                {{ deliveryMethod.shortName }}
+              </p>
+              <p class="text-base-content/50 text-xs">
+                {{ deliveryMethod.description }}
+              </p>
+              <p class="text-base-content/50 text-xs">
+                {{
+                  "checkout.deliveryMethod.description"
+                    | translate
+                      : {
+                          time: deliveryMethod.deliveryTime,
+                          cost: deliveryMethod.cost | dynamicNumber: locale(),
+                          currency: "currency.EGP" | translate,
+                        }
+                }}
+                <span> </span>
+              </p>
+            </div>
+          </label>
+        }
+      </div>
+    </fieldset>
+    <!-- Delivery Method -->
+
+    <!-- Payment Method -->
+    <fieldset class="fieldset rounded-box border-base-content/25 border p-4">
+      <legend class="fieldset-legend">
+        {{ "checkout.paymentMethod.title" | translate }}
+      </legend>
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <input
+            formControlName="paymentMethod"
+            id="cash"
+            type="radio"
+            class="radio radio-xs"
+            value="cash"
+          />
+          <label for="cash" class="text-sm font-semibold">
+            {{ "checkout.paymentMethod.cash" | translate }}
+          </label>
+        </div>
+        <div class="flex items-center gap-2">
+          <input
+            formControlName="paymentMethod"
+            id="online"
+            type="radio"
+            class="radio radio-xs"
+            value="online"
+          />
+          <label for="online" class="text-sm font-semibold">
+            {{ "checkout.paymentMethod.online" | translate }}
+          </label>
+        </div>
+      </div>
+    </fieldset>
+    <!-- Delivery Method -->
+  </form>
+
+  <div class="bg-base-100 rounded-lg">
+    <app-payment-summery
+      [subTotal]="subTotal()"
+      [shippingCost]="shippingCost()"
+      [tax]="tax()"
+      [total]="total()"
+    />
+  </div>
+
+  <div class="flex items-center justify-center">
+    <button
+      type="submit"
+      [disabled]="checkoutForm.invalid"
+      class="btn btn-primary"
+      (click)="checkout()"
+    >
+      {{ "checkout.placeOrderBtn" | translate }}
+    </button>
+  </div>
+</div>
