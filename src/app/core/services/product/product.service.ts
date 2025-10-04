@@ -89,7 +89,7 @@ export class ProductService {
   }
 
   getBrands() {
-    let url = `${environment.apiUrl}/products/brands`;
+    let url = `${environment.apiUrl}/brands`;
     let params = new HttpParams();
 
     return this._httpClient
@@ -98,7 +98,7 @@ export class ProductService {
   }
 
   getCategories() {
-    let url = `${environment.apiUrl}/products/categories`;
+    let url = `${environment.apiUrl}/categories`;
     let params = new HttpParams();
 
     return this._httpClient
